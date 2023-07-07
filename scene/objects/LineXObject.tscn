@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1u07xt7tygu2"]
+
+[ext_resource type="Script" path="res://scene/objects/LineXObject.gd" id="1_hirsw"]
+
+[node name="LineXObject" type="Node"]
+script = ExtResource("1_hirsw")
+size_x = null

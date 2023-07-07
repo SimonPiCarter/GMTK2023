@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4npg4r6laa6h"]
+
+[ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="1_k1f0o"]
+[ext_resource type="Script" path="res://scene/test/test_grid.gd" id="1_v83je"]
+[ext_resource type="PackedScene" uid="uid://bqa3dwbfunnwv" path="res://scene/UI/item.tscn" id="3_mc4wm"]
+
+[node name="test_grid" type="Node2D"]
+script = ExtResource("1_v83je")
+
+[node name="Grid" parent="." instance=ExtResource("1_k1f0o")]
+
+[node name="Step" type="Button" parent="."]
+offset_left = 358.0
+offset_top = 61.0
+offset_right = 495.0
+offset_bottom = 111.0
+text = "step"
+
+[node name="x2" type="Button" parent="."]
+offset_left = 358.0
+offset_top = 125.0
+offset_right = 495.0
+offset_bottom = 175.0
+text = "X2"
+
+[node name="y3" type="Button" parent="."]
+offset_left = 357.0
+offset_top = 188.0
+offset_right = 494.0
+offset_bottom = 238.0
+text = "Y3"
+
+[node name="win_screen" type="Label" parent="."]
+visible = false
+offset_left = 125.0
+offset_top = 109.0
+offset_right = 215.0
+offset_bottom = 142.0
+text = "You won !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item" parent="." instance=ExtResource("3_mc4wm")]
