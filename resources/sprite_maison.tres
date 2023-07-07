@@ -1,0 +1,54 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://xslcuuuans4y"]
+
+[ext_resource type="Texture2D" uid="uid://btpe0jiktbe7t" path="res://resources/test_sprite_maison.png" id="1_jk0si"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3prc"]
+atlas = ExtResource("1_jk0si")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qi8n"]
+atlas = ExtResource("1_jk0si")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_221bx"]
+atlas = ExtResource("1_jk0si")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvxea"]
+atlas = ExtResource("1_jk0si")
+region = Rect2(0, 0, 40, 40)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3prc")
+}],
+"loop": true,
+"name": &"big",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qi8n")
+}],
+"loop": true,
+"name": &"bleu",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_221bx")
+}],
+"loop": true,
+"name": &"blinded",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvxea")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}]

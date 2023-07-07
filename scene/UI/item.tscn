@@ -1,28 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqa3dwbfunnwv"]
+[gd_scene load_steps=6 format=3 uid="uid://bqa3dwbfunnwv"]
 
-[ext_resource type="Texture2D" uid="uid://c1sw71ponsjn6" path="res://icon.svg" id="1_v8hkc"]
+[ext_resource type="Script" path="res://scene/UI/item.gd" id="1_3g8p4"]
+[ext_resource type="Texture2D" uid="uid://btpe0jiktbe7t" path="res://resources/test_sprite_maison.png" id="1_hsapl"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_hqkul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ts0ri"]
+resource_local_to_scene = true
+shader = ExtResource("2_hqkul")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sah7"]
+resource_local_to_scene = true
+atlas = ExtResource("1_hsapl")
+region = Rect2(0, 0, 40, 40)
 
 [node name="item" type="Control"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3g8p4")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="tex" type="TextureButton" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ts0ri")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("1_v8hkc")
-texture_pressed = ExtResource("1_v8hkc")
-texture_hover = ExtResource("1_v8hkc")
+texture_normal = SubResource("AtlasTexture_5sah7")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="."]
+[node name="qty_label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

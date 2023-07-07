@@ -1,9 +1,9 @@
 extends Node2D
 
-var xobj = preload("res://scene/objects/LineXObject.tscn").instantiate()
-var yobj = preload("res://scene/objects/LineYObject.tscn").instantiate()
+@onready var item1 = $box/item1
+@onready var item2 = $box/item2
 
-var current_obj : GridObject = null
+var current_item : Item = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,33 +14,40 @@ func _ready():
 	$Grid.get_elt(3, 3).set_empty(false)
 
 	$Step.pressed.connect($Grid.decrease_timer)
-	$x2.pressed.connect(objX)
-	$y3.pressed.connect(objY)
+	item1.tex.pressed.connect(objX)
+	item2.tex.pressed.connect(objY)
 
 	$Grid.case_clicked.connect(clicked)
 
-	xobj.size_x = 0
-	xobj.qty = 1
-	yobj.size_y = 0
-	yobj.qty = 1
-
 func objX():
-	if xobj.qty > 0:
-		current_obj = xobj
+	reset_all_items()
+	if item1.object.qty > 0:
+		current_item = item1
+		current_item.tex.material.set_shader_parameter("width", 1.)
 
 func objY():
-	if yobj.qty > 0:
-		current_obj = yobj
+	reset_all_items()
+	if item2.object.qty > 0:
+		current_item = item2
+		current_item.tex.material.set_shader_parameter("width", 1.)
 
 func clicked(x, y):
-	if current_obj:
+	if current_item:
+		var current_obj = current_item.object
 		var cases = current_obj.get_case(Vector2(x,y), $Grid)
 		for case in cases:
 			case.start_fire()
-		$Grid.decrease_timer()
-		current_obj.qty -= 1
 
+		current_item.use()
 		current_obj = null
 
-	if $Grid.check_all_case_on_fire():
-		$win_screen.show()
+		$Grid.decrease_timer()
+
+		if $Grid.check_all_case_on_fire():
+			$win_screen.show()
+
+	reset_all_items()
+
+func reset_all_items():
+	item1.tex.material.set_shader_parameter("width", 0.)
+	item2.tex.material.set_shader_parameter("width", 0.)

@@ -10,25 +10,12 @@ script = ExtResource("1_v83je")
 [node name="Grid" parent="." instance=ExtResource("1_k1f0o")]
 
 [node name="Step" type="Button" parent="."]
+visible = false
 offset_left = 358.0
 offset_top = 61.0
 offset_right = 495.0
 offset_bottom = 111.0
 text = "step"
-
-[node name="x2" type="Button" parent="."]
-offset_left = 358.0
-offset_top = 125.0
-offset_right = 495.0
-offset_bottom = 175.0
-text = "X2"
-
-[node name="y3" type="Button" parent="."]
-offset_left = 357.0
-offset_top = 188.0
-offset_right = 494.0
-offset_bottom = 238.0
-text = "Y3"
 
 [node name="win_screen" type="Label" parent="."]
 visible = false
@@ -40,4 +27,15 @@ text = "You won !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="item" parent="." instance=ExtResource("3_mc4wm")]
+[node name="box" type="HBoxContainer" parent="."]
+offset_left = 67.0
+offset_top = 333.0
+offset_right = 199.0
+offset_bottom = 397.0
+metadata/_edit_group_ = true
+
+[node name="item1" parent="box" instance=ExtResource("3_mc4wm")]
+layout_mode = 2
+
+[node name="item2" parent="box" instance=ExtResource("3_mc4wm")]
+layout_mode = 2

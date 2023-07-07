@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsiu3novor71h"]
 
 [ext_resource type="Script" path="res://scene/grid/Case.gd" id="1_0mgw5"]
-[ext_resource type="Texture2D" uid="uid://c1sw71ponsjn6" path="res://icon.svg" id="2_blmfy"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_cgyok"]
+[ext_resource type="SpriteFrames" uid="uid://xslcuuuans4y" path="res://resources/sprite_maison.tres" id="3_kyvoh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5d2m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jx116"]
 resource_local_to_scene = true
 shader = ExtResource("2_cgyok")
-shader_parameter/color = Color(0.858824, 0, 0, 1)
-shader_parameter/width = 2.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
 shader_parameter/pattern = 0
-shader_parameter/inside = true
+shader_parameter/inside = false
 shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2uiq"]
@@ -19,10 +19,12 @@ size = Vector2(62, 62)
 [node name="Case" type="Node2D"]
 script = ExtResource("1_0mgw5")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_f5d2m")
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_blmfy")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_jx116")
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_kyvoh")
+animation = &"red"
 
 [node name="Area" type="Area2D" parent="."]
 
