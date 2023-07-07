@@ -2,12 +2,14 @@ class_name Case extends Node2D
 
 var in_flame : bool = false
 var timer : int = 0
-var fire_duration : int = 5
+var fire_duration : int = 3
 
 var empty = false
 
 @onready var area = $Area
 @onready var label = $Label
+@onready var item = $item
+@onready var touched = $touched
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

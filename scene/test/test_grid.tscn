@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4npg4r6laa6h"]
+[gd_scene load_steps=5 format=3 uid="uid://c4npg4r6laa6h"]
 
 [ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="1_k1f0o"]
 [ext_resource type="Script" path="res://scene/test/test_grid.gd" id="1_v83je"]
 [ext_resource type="PackedScene" uid="uid://bqa3dwbfunnwv" path="res://scene/UI/item.tscn" id="3_mc4wm"]
+[ext_resource type="Texture2D" uid="uid://bkcfd57qa8en8" path="res://resources/objects/house4.tres" id="4_k3cfp"]
 
 [node name="test_grid" type="Node2D"]
 script = ExtResource("1_v83je")
@@ -39,3 +40,6 @@ layout_mode = 2
 
 [node name="item2" parent="box" instance=ExtResource("3_mc4wm")]
 layout_mode = 2
+qty = 2
+size_x = 1
+texture = ExtResource("4_k3cfp")

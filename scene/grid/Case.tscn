@@ -36,4 +36,20 @@ offset_left = 18.0
 offset_top = 10.0
 offset_right = 32.0
 offset_bottom = 36.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "0"
+
+[node name="touched" type="ColorRect" parent="."]
+visible = false
+offset_left = -31.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 31.0
+mouse_filter = 2
+color = Color(1, 0, 0, 0.439216)
+
+[node name="item" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.560784)
+texture_filter = 1
