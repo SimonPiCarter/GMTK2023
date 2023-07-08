@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://vckftiv6kll"]
+
+[ext_resource type="Texture2D" uid="uid://40a3t6sagrxg" path="res://resources/sprites/sprite_house_01.png" id="1_5pt23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sbu2"]
+atlas = ExtResource("1_5pt23")
+region = Rect2(0, 210, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcod1"]
+atlas = ExtResource("1_5pt23")
+region = Rect2(42, 210, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juk55"]
+atlas = ExtResource("1_5pt23")
+region = Rect2(84, 210, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1tw1"]
+atlas = ExtResource("1_5pt23")
+region = Rect2(126, 210, 42, 42)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sbu2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcod1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juk55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1tw1")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]

@@ -1,7 +1,7 @@
 class_name Grid extends Node2D
 
 @export
-var SIZE = 40
+var SIZE = 42
 
 # internal data
 var data : Array[Case] = []

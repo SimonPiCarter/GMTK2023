@@ -1,7 +1,7 @@
 class_name Case extends Node2D
 
 @export
-var SIZE = 40
+var SIZE = 42
 
 var prefab_idx : int = 0
 var in_flame : bool = false

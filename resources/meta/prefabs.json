@@ -9,7 +9,7 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/house1.tres"
+			"texture":"res://resources/objects/fire_0.tres"
 		},
 		{
 			"id":"3X",
@@ -20,7 +20,7 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/house2.tres"
+			"texture":"res://resources/objects/fire_lr.tres"
 		},
 		{
 			"id":"3Y",
@@ -31,7 +31,7 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/house3.tres"
+			"texture":"res://resources/objects/fire_ud.tres"
 		},
 		{
 			"id":"cross",
@@ -46,21 +46,63 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/house4.tres"
+			"texture":"res://resources/objects/fire_ludr.tres"
 		}
 	],
 	"case_prefabs":[
 		{
 			"is_protected" : false,
 			"is_forbidden" : false,
-			"fire_duration" : 3,
+			"fire_duration" : 0,
 			"frames" : "res://resources/frames/house_1_1.tres"
 		},
 		{
 			"is_protected" : false,
 			"is_forbidden" : false,
-			"fire_duration" : 5,
+			"fire_duration" : 0,
 			"frames" : "res://resources/frames/house_2_1.tres"
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : false,
+			"fire_duration" : 0,
+			"frames" : "res://resources/frames/house_3_1.tres"
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : false,
+			"fire_duration" : 0,
+			"frames" : "res://resources/frames/house_1_2.tres"
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : false,
+			"fire_duration" : 0,
+			"frames" : "res://resources/frames/house_2_2.tres"
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : false,
+			"fire_duration" : 0,
+			"frames" : "res://resources/frames/house_3_2.tres"
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : false,
+			"fire_duration" : 0,
+			"frames" : "res://resources/frames/house_1_3.tres"
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : false,
+			"fire_duration" : 0,
+			"frames" : "res://resources/frames/house_2_3.tres"
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : false,
+			"fire_duration" : 0,
+			"frames" : "res://resources/frames/house_3_3.tres"
 		}
 	]
 }
