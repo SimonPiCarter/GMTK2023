@@ -38,7 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_5sah7")
-stretch_mode = 0
+stretch_mode = 3
 
 [node name="qty_label" type="Label" parent="."]
 layout_mode = 1

@@ -46,17 +46,14 @@ offset_left = 4.0
 offset_top = 364.0
 offset_right = 634.0
 offset_bottom = 634.0
-metadata/_edit_group_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(600, 70)
 layout_mode = 2
-metadata/_edit_group_ = true
 
 [node name="box" type="HBoxContainer" parent="VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(600, 64)
 layout_mode = 2
-metadata/_edit_group_ = true
 
 [node name="item1" parent="VBoxContainer/ScrollContainer/box" instance=ExtResource("3_mc4wm")]
 layout_mode = 2
@@ -73,4 +70,5 @@ text = "Restart"
 
 [node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "Next"
