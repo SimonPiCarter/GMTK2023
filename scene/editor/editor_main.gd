@@ -8,6 +8,7 @@ extends Node2D
 @onready var eraser_toogle = $VBoxContainer/HBoxContainer/Eraser
 @onready var serialize_label = $VBoxContainer/TextEdit
 @onready var player = $VBoxContainer/Play
+@onready var mute = $mute
 
 var sound : SoundManager = null
 
@@ -29,6 +30,7 @@ func _ready():
 	reloader.pressed.connect(reload)
 	laoder.pressed.connect(loadSeed)
 	player.pressed.connect(play)
+	mute.pressed.connect(mute_sound)
 
 	level.unserialize_level("00000000000010000000000020120")
 
@@ -39,6 +41,12 @@ func _ready():
 	eraser_toogle.toggled.connect(switch_eraser)
 
 	reload()
+
+func mute_sound():
+	if mute.button_pressed:
+		sound.mute()
+	else:
+		sound.unmute()
 
 func restart():
 	level = Level.new()
@@ -108,6 +116,7 @@ func play():
 	remove_child(sound)
 	game.add_child(sound)
 	game.sound = sound
+	game.get_node("mute").button_pressed = mute.button_pressed
 
 	get_parent().add_child(game)
 	queue_free()

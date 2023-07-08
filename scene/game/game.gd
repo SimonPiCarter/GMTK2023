@@ -3,6 +3,7 @@ extends Node2D
 @onready var restart = $VBoxContainer/HBoxContainer/Restart
 @onready var editor = $VBoxContainer/HBoxContainer/Editor
 @onready var box = $VBoxContainer/ScrollContainer/box
+@onready var mute = $mute
 
 var items : Array[Item] = []
 
@@ -22,6 +23,7 @@ func _ready():
 	$Step.pressed.connect($Grid.decrease_timer)
 	restart.pressed.connect(reload)
 	editor.pressed.connect(editor_load)
+	mute.pressed.connect(mute_sound)
 
 	$Grid.case_clicked.connect(clicked)
 	$Grid.case_entered.connect(entered)
@@ -77,11 +79,18 @@ func editor_load():
 	remove_child(sound)
 	scene.add_child(sound)
 	scene.sound = sound
+	scene.get_node("mute").button_pressed = mute.button_pressed
 
 	get_parent().add_child(scene)
 	scene.level.unserialize_level(level.serialize_level())
 	scene.reload()
 	queue_free()
+
+func mute_sound():
+	if mute.button_pressed:
+		sound.mute()
+	else:
+		sound.unmute()
 
 func select(item : Item):
 	reset_all_items()
