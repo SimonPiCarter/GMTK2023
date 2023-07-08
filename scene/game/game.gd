@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var restart = $VBoxContainer/HBoxContainer/Restart
-@onready var next = $VBoxContainer/HBoxContainer/Next
+@onready var editor = $VBoxContainer/HBoxContainer/Editor
 @onready var box = $VBoxContainer/ScrollContainer/box
 
 var items : Array[Item] = []
@@ -19,6 +19,7 @@ func _ready():
 	# connecting signals
 	$Step.pressed.connect($Grid.decrease_timer)
 	restart.pressed.connect(reload)
+	editor.pressed.connect(editor_load)
 
 	$Grid.case_clicked.connect(clicked)
 	$Grid.case_entered.connect(entered)
@@ -62,6 +63,13 @@ func reload():
 			items.push_back(child)
 			child.tex.pressed.connect(select.bind(child))
 		prefab += 1
+
+func editor_load():
+	var scene = load("res://scene/editor/editor_main.tscn").instantiate()
+	get_parent().add_child(scene)
+	scene.level.unserialize_level(level.serialize_level())
+	scene.reload()
+	queue_free()
 
 func select(item : Item):
 	reset_all_items()
