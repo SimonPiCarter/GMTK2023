@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://clinjjew62of3"]
-
-[ext_resource type="Script" path="res://scene/objects/GridObject.gd" id="1_cb0pn"]
-
-[node name="GridObject" type="Node"]
-script = ExtResource("1_cb0pn")
