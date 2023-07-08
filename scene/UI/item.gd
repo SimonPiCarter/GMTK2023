@@ -26,3 +26,7 @@ func use():
 	object.qty -= 1
 	qty_label.text = String.num_int64(object.qty)
 	tex.material.set_shader_parameter("width", 0.)
+
+func set_qty(new_qty : int):
+	object.qty = new_qty
+	qty_label.text = String.num_int64(object.qty)
