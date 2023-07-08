@@ -40,7 +40,7 @@ func decrease_timer():
 		elt.decrease_timer()
 
 func click(_viewport, event, _shape_idx, i ,j):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		case_clicked.emit(i, j)
 
 func entered(i ,j):
