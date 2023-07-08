@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ydhurapkggka"]
-
-[ext_resource type="Script" path="res://scene/objects/LineYObject.gd" id="1_50mmj"]
-
-[node name="LineXObject" type="Node"]
-script = ExtResource("1_50mmj")
-size_x = null
