@@ -7,7 +7,7 @@ extends Node2D
 @onready var box_case = $VBoxContainer/ScrollContainer2/box
 @onready var eraser_toogle = $VBoxContainer/HBoxContainer/Eraser
 @onready var serialize_label = $VBoxContainer/TextEdit
-@onready var player = $VBoxContainer/Play
+@onready var player = $VBoxContainer/HBoxContainer/Play
 @onready var mute = $mute
 
 var sound : SoundManager = null
@@ -62,7 +62,11 @@ func reload():
 
 	# loading level
 	$Grid.resize(5,5)
-	$Grid.position = Vector2(600-5*$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
+	$Grid.position = Vector2(600-5*$Grid.SIZE/2+$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
+
+	$ColorRect.position.x = 600-5*$Grid.SIZE/2
+	$ColorRect.size.x = 5*$Grid.SIZE
+	$ColorRect.size.y = 5*$Grid.SIZE
 
 	# meta data
 	var loader = JsonLoader.new()
@@ -128,10 +132,10 @@ func switch_eraser(state : bool):
 func select_case(item : ItemCase):
 	reset_all_items()
 	if current_item == item:
-		current_item.tex.material.set_shader_parameter("width", 0.)
+		current_item.lowlight()
 		current_item = null
 	else:
-		item.tex.material.set_shader_parameter("width", 1.)
+		item.highlight()
 		current_item = item
 		eraser_toogle.button_pressed = false
 		eraser = false
@@ -174,7 +178,7 @@ func exited(x, y):
 
 func reset_all_items():
 	for item in items_case:
-		item.tex.material.set_shader_parameter("width", 0.)
+		item.lowlight()
 
 func serialize_level() -> String:
 	var lvl = Level.new()

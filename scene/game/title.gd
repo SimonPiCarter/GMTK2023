@@ -9,7 +9,7 @@ func _ready():
 
 func startPlay():
 	var game = load("res://scene/game/game.tscn").instantiate()
-	game.level.unserialize_level(Level.uncompress_string("a333333333333333333330129"))
+	game.level.unserialize_level(Level.uncompress_string("01z2z24e204r1z3e11"))
 
 	# transmit sound
 	remove_child(sound)

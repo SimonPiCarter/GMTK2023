@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqa3dwbfunnwv"]
+[gd_scene load_steps=7 format=3 uid="uid://bqa3dwbfunnwv"]
 
 [ext_resource type="Script" path="res://scene/UI/item.gd" id="1_3g8p4"]
+[ext_resource type="Texture2D" uid="uid://xxng27knb37h" path="res://resources/textures/rond_0.tres" id="2_4qs58"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_hqkul"]
+[ext_resource type="Texture2D" uid="uid://bgh7w0g6y0ha8" path="res://resources/textures/rond_1.tres" id="3_i670k"]
 [ext_resource type="Texture2D" uid="uid://djmwhqsi8u751" path="res://resources/objects/fire_0.tres" id="3_prb4k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ts0ri"]
@@ -14,7 +16,7 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 
 [node name="item" type="Control"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(84, 84)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +24,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3g8p4")
+
+[node name="grey" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_i670k")
+stretch_mode = 5
+
+[node name="light" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_4qs58")
+stretch_mode = 5
 
 [node name="tex" type="TextureButton" parent="."]
 texture_filter = 1
@@ -33,7 +60,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("3_prb4k")
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="qty_label" type="Label" parent="."]
 layout_mode = 1
@@ -46,5 +73,5 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 0
 text = "0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 2

@@ -18,7 +18,7 @@ func get_case(pos : Vector2, grid : Grid) -> Array[Case]:
 	return result
 
 func clone() -> GridObject:
-	var cloned = LineYObject.new()
+	var cloned = ALineYObject.new()
 	cloned.size_y = size_y
 	cloned.reversed = reversed
 	return cloned

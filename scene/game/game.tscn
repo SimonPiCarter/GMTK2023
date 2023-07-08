@@ -1,14 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqwcst1mhwxkr"]
+[gd_scene load_steps=13 format=3 uid="uid://6y83klolk51x"]
 
 [ext_resource type="Script" path="res://scene/game/game.gd" id="1_gkser"]
 [ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="2_qen05"]
 [ext_resource type="PackedScene" uid="uid://bqa3dwbfunnwv" path="res://scene/UI/item.tscn" id="3_c8a3e"]
 [ext_resource type="Texture2D" uid="uid://b7vgbbboycicp" path="res://resources/sprites/sound_on.tres" id="4_fky37"]
 [ext_resource type="Texture2D" uid="uid://6g70kibbf02e" path="res://resources/sprites/sound_off.tres" id="5_7spfk"]
+[ext_resource type="Texture2D" uid="uid://cgyfxusfeatlp" path="res://resources/textures/editor_1.tres" id="5_w5myt"]
 [ext_resource type="Texture2D" uid="uid://bpydijg14ej5h" path="res://resources/textures/background.tres" id="6_ujnym"]
+[ext_resource type="Texture2D" uid="uid://blou1p5wy2gna" path="res://resources/textures/editor_3.tres" id="6_vxprs"]
+[ext_resource type="Texture2D" uid="uid://i1id33oe18vb" path="res://resources/textures/editor_2.tres" id="7_fhn37"]
+[ext_resource type="Texture2D" uid="uid://ciub4q58t70ve" path="res://resources/textures/restart_1.tres" id="8_4ytve"]
+[ext_resource type="Texture2D" uid="uid://behtkmbxqpjhv" path="res://resources/textures/restart_3.tres" id="9_by31a"]
+[ext_resource type="Texture2D" uid="uid://vsiq44k72cms" path="res://resources/textures/restart_2.tres" id="10_p43om"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_gkser")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0, 0.34902, 0, 1)
 
 [node name="Grid" parent="." instance=ExtResource("2_qen05")]
 
@@ -46,24 +58,24 @@ vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(599, 767)
-scale = Vector2(4, 3)
+position = Vector2(600, 745)
+scale = Vector2(4.018, 2.5)
 texture = ExtResource("6_ujnym")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 256.0
 offset_top = 668.0
 offset_right = 886.0
-offset_bottom = 938.0
+offset_bottom = 897.0
 metadata/_edit_group_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(600, 70)
+custom_minimum_size = Vector2(600, 185)
 layout_mode = 2
 
-[node name="box" type="HBoxContainer" parent="VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(600, 64)
+[node name="box" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
+columns = 6
 
 [node name="item1" parent="VBoxContainer/ScrollContainer/box" instance=ExtResource("3_c8a3e")]
 layout_mode = 2
@@ -73,14 +85,25 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+alignment = 2
 
-[node name="Restart" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Editor" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
-text = "Restart"
+texture_normal = ExtResource("5_w5myt")
+texture_pressed = ExtResource("6_vxprs")
+texture_hover = ExtResource("7_fhn37")
+stretch_mode = 5
 
-[node name="Editor" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Restart" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
-text = "Editor"
+texture_normal = ExtResource("8_4ytve")
+texture_pressed = ExtResource("9_by31a")
+texture_hover = ExtResource("10_p43om")
+stretch_mode = 5
 
 [node name="mute" type="TextureButton" parent="."]
 offset_left = 1134.0

@@ -8,6 +8,7 @@ var disabled : bool = false
 
 @onready var tex = $tex
 @onready var qty_label = $qty_label
+@onready var light = $light
 
 func _ready():
 	reset()
@@ -26,6 +27,12 @@ func reset():
 		qty_label.hide()
 
 	tex.texture_normal = prefab.texture
+
+func highlight():
+	light.show()
+
+func lowlight():
+	light.hide()
 
 func use():
 	object.qty -= 1

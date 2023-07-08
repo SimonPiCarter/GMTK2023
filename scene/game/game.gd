@@ -55,7 +55,11 @@ func reload():
 
 	# loading level
 	$Grid.resize(5,5)
-	$Grid.position = Vector2(600-5*$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
+	$Grid.position = Vector2(600-5*$Grid.SIZE/2+$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
+
+	$ColorRect.position.x = 600-5*$Grid.SIZE/2
+	$ColorRect.size.x = 5*$Grid.SIZE
+	$ColorRect.size.y = 5*$Grid.SIZE
 
 	# meta data
 	var loader = JsonLoader.new()
@@ -104,6 +108,8 @@ func editor_load():
 	queue_free()
 
 func mute_sound():
+	if not sound:
+		return
 	if mute.button_pressed:
 		sound.mute()
 	else:
@@ -115,7 +121,7 @@ func select(item : Item):
 	reset_all_items()
 	if item.object.qty > 0 and not item.object.is_cat():
 		current_item = item
-		current_item.tex.material.set_shader_parameter("width", 1.)
+		current_item.highlight()
 
 	if item.object.is_cat() and $Grid.check_all_case_on_fire():
 		sound.play_cat()
@@ -154,8 +160,10 @@ func clicked(x, y):
 		if $Grid.check_all_case_on_fire() and $Grid.check_cats_on_tree():
 			win()
 		elif (no_more_items() and not $Grid.check_all_case_on_fire()) or $Grid.tree_on_fire():
+			over = true
 			$lose_screen.show()
-			sound.play_lose()
+			if sound:
+				sound.play_lose()
 		else:
 			$Grid.decrease_timer()
 
@@ -196,4 +204,4 @@ func exited(x, y):
 
 func reset_all_items():
 	for item in items:
-		item.tex.material.set_shader_parameter("width", 0.)
+		item.lowlight()

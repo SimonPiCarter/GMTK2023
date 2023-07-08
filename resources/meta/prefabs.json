@@ -1,7 +1,6 @@
 {
 	"item_prefabs":[
 		{
-			"id":"solo",
 			"objects":[
 				{
 					"type":"Xline",
@@ -13,7 +12,6 @@
 			"texture_disabled":"res://resources/objects/fire_0.tres"
 		},
 		{
-			"id":"3X",
 			"objects":[
 				{
 					"type":"Xline",
@@ -25,7 +23,6 @@
 			"texture_disabled":"res://resources/objects/fire_lr.tres"
 		},
 		{
-			"id":"3Y",
 			"objects":[
 				{
 					"type":"Yline",
@@ -37,7 +34,28 @@
 			"texture_disabled":"res://resources/objects/fire_ud.tres"
 		},
 		{
-			"id":"cross",
+			"objects":[
+				{
+					"type":"AXline",
+					"size":1
+				}
+			],
+			"qty":1,
+			"texture":"res://resources/objects/fire_r.tres",
+			"texture_disabled":"res://resources/objects/fire_r.tres"
+		},
+		{
+			"objects":[
+				{
+					"type":"AYline",
+					"size":1
+				}
+			],
+			"qty":1,
+			"texture":"res://resources/objects/fire_d.tres",
+			"texture_disabled":"res://resources/objects/fire_d.tres"
+		},
+		{
 			"objects":[
 				{
 					"type":"Xline",
@@ -53,7 +71,6 @@
 			"texture_disabled":"res://resources/objects/fire_ludr.tres"
 		},
 		{
-			"id":"cat",
 			"objects":[
 				{
 					"type":"Cat",

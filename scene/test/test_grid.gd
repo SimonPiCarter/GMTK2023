@@ -63,7 +63,7 @@ func select(item : Item):
 	reset_all_items()
 	if item.object.qty > 0:
 		current_item = item
-		current_item.tex.material.set_shader_parameter("width", 1.)
+		current_item.highlight()
 
 func clicked(x, y):
 	if current_item:
@@ -116,4 +116,4 @@ func exited(x, y):
 
 func reset_all_items():
 	for item in items:
-		item.tex.material.set_shader_parameter("width", 0.)
+		item.lowlight()
