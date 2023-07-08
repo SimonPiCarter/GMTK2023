@@ -11,7 +11,7 @@ func _ready():
 func _process(_delta):
 	pass
 
-func _input_event(_viewport, event, shape_idx):
+func _input_event(_viewport, event, _add_ice_candidateshape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed:
