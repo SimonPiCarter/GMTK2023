@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var restart = $Restart
+@onready var restart = $VBoxContainer/HBoxContainer/Restart
+@onready var next = $VBoxContainer/HBoxContainer/Next
+@onready var box = $VBoxContainer/ScrollContainer/box
 
 var items : Array[Item] = []
 
@@ -42,15 +44,15 @@ func reload():
 	prefabs.push_back(x_object_0.new())
 	prefabs.push_back(x_object_1.new())
 	prefabs.push_back(y_object_0.new())
-	prefabs.push_back(y_object_1.new())
+	prefabs.push_back(cross_object_1.new())
 
 	# loading items
-	for child in $box.get_children():
+	for child in box.get_children():
 		child.queue_free()
 
 	for prefab in prefabs:
 		var child = preload("res://scene/UI/item.tscn").instantiate()
-		$box.add_child(child)
+		box.add_child(child)
 		child.set_prefab(prefab)
 		items.push_back(child)
 		child.tex.pressed.connect(select.bind(child))

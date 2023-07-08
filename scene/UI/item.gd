@@ -15,7 +15,7 @@ func set_prefab(new_prefab : prefab_item):
 	reset()
 
 func reset():
-	object = prefab.object.duplicate()
+	object = prefab.object.clone()
 	object.qty = prefab.qty
 
 	qty_label.text = String.num_int64(object.qty)
