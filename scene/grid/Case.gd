@@ -3,6 +3,7 @@ class_name Case extends Node2D
 @export
 var SIZE = 40
 
+var prefab_idx : int = 0
 var in_flame : bool = false
 var timer : int = 0
 var fire_duration : int = 3
@@ -39,6 +40,7 @@ func set_from_prefab(prefab : prefab_case):
 	set_empty(false)
 	$Sprite.sprite_frames = prefab.frames
 	fire_duration = prefab.fire_duration
+	prefab_idx = prefab.idx
 
 func decrease_timer():
 	if timer == 1:

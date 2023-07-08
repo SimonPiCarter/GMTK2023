@@ -18,10 +18,12 @@ func read(path : String):
 		# fill prefabs
 
 		# items
+		var idx : int = 0
 		var prefabs = data["item_prefabs"]
 		for prefab in prefabs:
 			var loaded = prefab_item.new()
-			prefabs_loaded.push_back(loaded)
+			loaded.idx = idx
+			idx += 1
 
 			if prefab["objects"].size() == 1:
 				loaded.object = readObject(prefab["objects"][0])
@@ -33,10 +35,16 @@ func read(path : String):
 			loaded.texture = load(prefab["texture"])
 			loaded.qty = prefab["qty"]
 
+			prefabs_loaded.push_back(loaded)
+
 		# cases
+		idx = 0
 		prefabs = data["case_prefabs"]
 		for prefab in prefabs:
 			var loaded = prefab_case.new()
+			loaded.idx = idx
+			idx += 1
+
 			loaded.frames = load(prefab["frames"])
 			loaded.is_protected = prefab["is_protected"]
 			loaded.is_forbidden = prefab["is_forbidden"]

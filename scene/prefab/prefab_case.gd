@@ -1,5 +1,6 @@
 class_name prefab_case extends Node
 
+var idx : int = 0
 var is_protected = false
 var is_forbidden = false
 var fire_duration : int = 3

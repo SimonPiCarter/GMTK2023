@@ -59,3 +59,11 @@ func reset_all_markers():
 	for elt in data:
 		elt.touched.hide()
 
+func serialize_grid() -> String:
+	var ser : String = ""
+	for elt in data:
+		if elt.empty:
+			ser += "0"
+		else:
+			ser += String.num_int64(elt.prefab_idx+1)
+	return ser
