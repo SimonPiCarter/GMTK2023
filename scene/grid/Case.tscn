@@ -19,10 +19,10 @@ sprite_frames = ExtResource("3_dwgw5")
 shape = SubResource("RectangleShape2D_q2uiq")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 21.0
-offset_top = 31.0
-offset_right = 35.0
-offset_bottom = 57.0
+offset_left = 39.0
+offset_top = 32.0
+offset_right = 53.0
+offset_bottom = 58.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 text = "0"

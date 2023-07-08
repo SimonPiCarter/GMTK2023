@@ -18,7 +18,7 @@ var items_case : Array[ItemCase] = []
 var current_item : ItemCase = null
 var eraser = false
 
-var grid_margin = 20
+var grid_margin = 5
 
 var level : Level = Level.new()
 
@@ -62,7 +62,7 @@ func reload():
 
 	# loading level
 	$Grid.resize(5,5)
-	$Grid.position = Vector2($Grid.SIZE/2 + grid_margin,$Grid.SIZE/2 + grid_margin)
+	$Grid.position = Vector2(600-5*$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
 
 	# meta data
 	var loader = JsonLoader.new()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqwcst1mhwxkr"]
+[gd_scene load_steps=7 format=3 uid="uid://cqwcst1mhwxkr"]
 
 [ext_resource type="Script" path="res://scene/game/game.gd" id="1_gkser"]
 [ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="2_qen05"]
 [ext_resource type="PackedScene" uid="uid://bqa3dwbfunnwv" path="res://scene/UI/item.tscn" id="3_c8a3e"]
 [ext_resource type="Texture2D" uid="uid://b7vgbbboycicp" path="res://resources/sprites/sound_on.tres" id="4_fky37"]
 [ext_resource type="Texture2D" uid="uid://6g70kibbf02e" path="res://resources/sprites/sound_off.tres" id="5_7spfk"]
+[ext_resource type="Texture2D" uid="uid://bpydijg14ej5h" path="res://resources/textures/background.tres" id="6_ujnym"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_gkser")
@@ -42,6 +43,12 @@ theme_override_constants/outline_size = 5
 text = "You lost :("
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(599, 767)
+scale = Vector2(4, 3)
+texture = ExtResource("6_ujnym")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 256.0

@@ -10,7 +10,7 @@ var items : Array[Item] = []
 
 var current_item : Item = null
 
-var grid_margin = 20
+var grid_margin = 5
 
 var current_case : Vector2i = Vector2i(-1,-1)
 
@@ -55,7 +55,7 @@ func reload():
 
 	# loading level
 	$Grid.resize(5,5)
-	$Grid.position = Vector2($Grid.SIZE/2 + grid_margin,$Grid.SIZE/2 + grid_margin)
+	$Grid.position = Vector2(600-5*$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
 
 	# meta data
 	var loader = JsonLoader.new()
@@ -144,7 +144,7 @@ func clicked(x, y):
 			# min 1 if one case on fire
 			sound.play_fire(max(min(1, nb_on_fire), int(nb_on_fire / 3.)))
 
-		if $Grid.check_cats_on_tree():
+		if $Grid.check_all_case_on_fire() and $Grid.check_cats_on_tree():
 			win()
 		elif (no_more_items() and not $Grid.check_all_case_on_fire()) or $Grid.tree_on_fire():
 			$lose_screen.show()

@@ -50,6 +50,7 @@ func set_from_prefab(prefab : prefab_case):
 	fire_duration = prefab.fire_duration
 	is_tree = prefab.is_tree
 	prefab_idx = prefab.idx
+	label.hide()
 
 func decrease_timer():
 	if timer == 1:
@@ -61,6 +62,7 @@ func stop_fire():
 	if empty:
 		return
 
+	label.hide()
 	in_flame = false
 
 	$Sprite.play("default")
@@ -74,6 +76,7 @@ func start_fire():
 	if not is_tree:
 		$Sprite.play("fire")
 		timer = fire_duration
+		label.show()
 		label.text = String.num_int64(timer)
 
 
