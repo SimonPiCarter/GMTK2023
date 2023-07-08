@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm3ggveifi16e"]
-
-[ext_resource type="Script" path="res://scene/prefab/case_object.gd" id="1_ipg7i"]
-
-[node name="case_object" type="Node"]
-script = ExtResource("1_ipg7i")
