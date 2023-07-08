@@ -3,9 +3,6 @@ class_name Grid extends Node2D
 @export
 var SIZE = 64
 
-@onready var area = $Area
-@onready var shape = $Area/shape
-
 # internal data
 var data : Array[Case] = []
 
@@ -18,8 +15,8 @@ signal case_exited(x : int, y : int)
 
 func resize(x, y):
 	for elt in data:
-		remove_child(elt)
 		elt.queue_free()
+	data.clear()
 
 	size_x = x
 	size_y = y
@@ -34,15 +31,6 @@ func resize(x, y):
 			node.area.mouse_exited.connect(exited.bind(i,j))
 			node.set_empty(true)
 			data.push_back(node)
-
-	shape.shape.size.x = size_x * SIZE
-	shape.shape.size.y = size_y * SIZE
-	area.position.x = size_x * SIZE / 2
-	area.position.y = size_y * SIZE / 2
-	area.mouse_exited.connect(exited_completely)
-
-func exited_completely():
-	reset_all_markers()
 
 func get_elt(x, y) -> Case:
 	return data[x*size_y + y]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4npg4r6laa6h"]
+[gd_scene load_steps=4 format=3 uid="uid://c4npg4r6laa6h"]
 
 [ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="1_k1f0o"]
 [ext_resource type="Script" path="res://scene/test/test_grid.gd" id="1_v83je"]
 [ext_resource type="PackedScene" uid="uid://bqa3dwbfunnwv" path="res://scene/UI/item.tscn" id="3_mc4wm"]
-[ext_resource type="Texture2D" uid="uid://bkcfd57qa8en8" path="res://resources/objects/house4.tres" id="4_k3cfp"]
 
 [node name="test_grid" type="Node2D"]
 script = ExtResource("1_v83je")
@@ -24,15 +23,29 @@ offset_left = 125.0
 offset_top = 109.0
 offset_right = 215.0
 offset_bottom = 142.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "You won !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="lose_screen" type="Label" parent="."]
+visible = false
+offset_left = 125.0
+offset_top = 109.0
+offset_right = 215.0
+offset_bottom = 142.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "You lost :("
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="box" type="HBoxContainer" parent="."]
-offset_left = 67.0
-offset_top = 333.0
-offset_right = 199.0
-offset_bottom = 397.0
+offset_left = 83.0
+offset_top = 335.0
+offset_right = 215.0
+offset_bottom = 399.0
 metadata/_edit_group_ = true
 
 [node name="item1" parent="box" instance=ExtResource("3_mc4wm")]
@@ -40,6 +53,10 @@ layout_mode = 2
 
 [node name="item2" parent="box" instance=ExtResource("3_mc4wm")]
 layout_mode = 2
-qty = 2
-size_x = 1
-texture = ExtResource("4_k3cfp")
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 15.0
+offset_top = 357.0
+offset_right = 80.0
+offset_bottom = 388.0
+text = "Restart"

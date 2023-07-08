@@ -1,21 +1,26 @@
 class_name Item extends Control
 
-var object : GridObject = preload("res://scene/objects/LineXObject.tscn").instantiate()
+@export var prefab : prefab_item = prefab_item.new()
 
-@export var qty : int = 1
-@export var size_x : int = 0
-@export var texture : Texture = preload("res://resources/objects/house2.tres")
+var object : GridObject = null
 
 @onready var tex = $tex
 @onready var qty_label = $qty_label
 
 func _ready():
-	object.qty = qty
-	object.size_x = size_x
+	reset()
+
+func set_prefab(new_prefab : prefab_item):
+	prefab = new_prefab
+	reset()
+
+func reset():
+	object = prefab.object.duplicate()
+	object.qty = prefab.qty
 
 	qty_label.text = String.num_int64(object.qty)
 
-	tex.texture_normal = texture
+	tex.texture_normal = prefab.texture
 
 func use():
 	object.qty -= 1

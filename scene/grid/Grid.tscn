@@ -1,13 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://lau331aol4pc"]
+[gd_scene load_steps=2 format=3 uid="uid://lau331aol4pc"]
 
 [ext_resource type="Script" path="res://scene/grid/Grid.gd" id="1_6rwmy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1mra"]
-
 [node name="Grid" type="Node2D"]
 script = ExtResource("1_6rwmy")
-
-[node name="Area" type="Area2D" parent="."]
-
-[node name="shape" type="CollisionShape2D" parent="Area"]
-shape = SubResource("RectangleShape2D_i1mra")
