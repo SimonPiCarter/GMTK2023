@@ -58,6 +58,28 @@
 		{
 			"objects":[
 				{
+					"type":"AXline",
+					"size":-1
+				}
+			],
+			"qty":1,
+			"texture":"res://resources/objects/fire_l.tres",
+			"texture_disabled":"res://resources/objects/fire_r.tres"
+		},
+		{
+			"objects":[
+				{
+					"type":"AYline",
+					"size":-1
+				}
+			],
+			"qty":1,
+			"texture":"res://resources/objects/fire_u.tres",
+			"texture_disabled":"res://resources/objects/fire_d.tres"
+		},
+		{
+			"objects":[
+				{
 					"type":"Xline",
 					"size":1
 				},
