@@ -52,7 +52,8 @@ func stop_fire():
 
 	in_flame = false
 
-	$Sprite.material.set_shader_parameter("color", Vector4(1,1,1,1))
+	$Sprite.play("default")
+	#$Sprite.material.set_shader_parameter("color", Vector4(1,1,1,1))
 
 func start_fire():
 	if empty:
@@ -61,6 +62,7 @@ func start_fire():
 	in_flame = true
 	timer = fire_duration
 
-	$Sprite.material.set_shader_parameter("color", Vector4(1,0,0,1))
+	$Sprite.play("fire")
+	#$Sprite.material.set_shader_parameter("color", Vector4(1,0,0,1))
 
 	label.text = String.num_int64(timer)
