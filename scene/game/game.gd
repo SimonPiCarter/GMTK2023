@@ -14,6 +14,8 @@ var current_case : Vector2i = Vector2i(-1,-1)
 
 var level : Level = Level.new()
 
+var sound : SoundManager = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# connecting signals
@@ -28,6 +30,8 @@ func _ready():
 	reload()
 
 func reload():
+	if sound:
+		sound.play_fire(0)
 	# clear
 	items.clear()
 	$win_screen.hide()
@@ -66,6 +70,14 @@ func reload():
 
 func editor_load():
 	var scene = load("res://scene/editor/editor_main.tscn").instantiate()
+
+	if sound:
+		sound.play_fire(0)
+
+	remove_child(sound)
+	scene.add_child(sound)
+	scene.sound = sound
+
 	get_parent().add_child(scene)
 	scene.level.unserialize_level(level.serialize_level())
 	scene.reload()
@@ -77,6 +89,9 @@ func select(item : Item):
 		current_item = item
 		current_item.tex.material.set_shader_parameter("width", 1.)
 
+	if sound:
+		sound.play_clic()
+
 func clicked(x, y):
 	if current_item:
 		var current_obj = current_item.object
@@ -85,18 +100,32 @@ func clicked(x, y):
 			case.start_fire()
 
 		current_item.use()
-		current_item = null
+		if current_item.object.qty == 0:
+			current_item = null
+			$Grid.reset_all_markers()
+			$Grid.get_elt(x,y).item.hide()
+
+		if sound:
+			var nb_on_fire : int = $Grid.get_nb_case_on_fire()
+
+			# min 1 if one case on fire
+			sound.play_fire(max(min(1, nb_on_fire), int(nb_on_fire / 3.)))
 
 		if $Grid.check_all_case_on_fire():
 			$win_screen.show()
+			sound.play_win()
 		elif no_more_items():
 			$lose_screen.show()
+			sound.play_lose()
 		else:
 			$Grid.decrease_timer()
 
+
+
 	reset_all_items()
-	$Grid.reset_all_markers()
-	$Grid.get_elt(x,y).item.hide()
+
+	if sound:
+		sound.play_clic()
 
 ## lose condition
 func no_more_items() -> bool:

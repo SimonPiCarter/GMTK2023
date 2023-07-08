@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6uxr8kib0gs2"]
+
+[ext_resource type="PackedScene" uid="uid://b60un4x6w0jyi" path="res://scene/sound/SoundManager.tscn" id="1_c3qa1"]
+[ext_resource type="Script" path="res://scene/game/title.gd" id="1_t2nht"]
+
+[node name="title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t2nht")
+
+[node name="sound" parent="." instance=ExtResource("1_c3qa1")]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"

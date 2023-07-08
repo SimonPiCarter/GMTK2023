@@ -9,6 +9,8 @@ extends Node2D
 @onready var serialize_label = $VBoxContainer/TextEdit
 @onready var player = $VBoxContainer/Play
 
+var sound : SoundManager = null
+
 var items : Array[Item] = []
 var items_case : Array[ItemCase] = []
 
@@ -102,6 +104,11 @@ func loadSeed():
 func play():
 	var game = load("res://scene/game/game.tscn").instantiate()
 	game.level.unserialize_level(Level.uncompress_string(serialize_label.text))
+
+	remove_child(sound)
+	game.add_child(sound)
+	game.sound = sound
+
 	get_parent().add_child(game)
 	queue_free()
 
@@ -110,10 +117,17 @@ func switch_eraser(state : bool):
 
 func select_case(item : ItemCase):
 	reset_all_items()
-	item.tex.material.set_shader_parameter("width", 1.)
-	current_item = item
-	eraser_toogle.button_pressed = false
-	eraser = false
+	if current_item == item:
+		current_item.tex.material.set_shader_parameter("width", 0.)
+		current_item = null
+	else:
+		item.tex.material.set_shader_parameter("width", 1.)
+		current_item = item
+		eraser_toogle.button_pressed = false
+		eraser = false
+
+	if sound:
+		sound.play_clic()
 
 func select(item : Item):
 	if item.object.qty < 9:
@@ -122,16 +136,19 @@ func select(item : Item):
 		item.set_qty(0)
 	do_serialize()
 
+	if sound:
+		sound.play_clic()
+
 func clicked(x, y):
 	if current_item:
 		$Grid.get_elt(x, y).set_from_prefab(current_item.prefab)
-
-		current_item.tex.material.set_shader_parameter("width", 0.)
-		current_item = null
 	elif eraser:
 		$Grid.get_elt(x, y).set_empty(true)
 
 	do_serialize()
+
+	if sound:
+		sound.play_clic()
 
 ## Event handling
 func entered(x, y):

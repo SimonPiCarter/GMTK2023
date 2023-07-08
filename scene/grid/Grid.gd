@@ -1,7 +1,7 @@
 class_name Grid extends Node2D
 
 @export
-var SIZE = 42
+var SIZE = 126
 
 # internal data
 var data : Array[Case] = []
@@ -54,6 +54,13 @@ func check_all_case_on_fire() -> bool:
 		if not elt.empty and not elt.in_flame:
 			return false
 	return true
+
+func get_nb_case_on_fire() -> int:
+	var nb : int = 0
+	for elt in data:
+		if not elt.empty and elt.in_flame:
+			nb += 1
+	return nb
 
 func reset_all_markers():
 	for elt in data:

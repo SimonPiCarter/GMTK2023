@@ -1,7 +1,8 @@
 class_name Case extends Node2D
 
+var SIZE_ORIG = 42
 @export
-var SIZE = 42
+var SIZE = 126
 
 var prefab_idx : int = 0
 var in_flame : bool = false
@@ -25,6 +26,10 @@ func _ready():
 	touched.size.y = SIZE
 	touched.position.x = -SIZE/2.0
 	touched.position.y = -SIZE/2.0
+	$Sprite.scale.x = SIZE/SIZE_ORIG
+	$Sprite.scale.y = SIZE/SIZE_ORIG
+	item.scale.x = SIZE/SIZE_ORIG
+	item.scale.y = SIZE/SIZE_ORIG
 
 func set_empty(e : bool):
 	if e:
