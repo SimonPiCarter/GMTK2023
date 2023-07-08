@@ -20,6 +20,9 @@ func reset():
 
 	qty_label.text = String.num_int64(object.qty)
 
+	if object.is_cat():
+		qty_label.hide()
+
 	tex.texture_normal = prefab.texture
 
 func use():

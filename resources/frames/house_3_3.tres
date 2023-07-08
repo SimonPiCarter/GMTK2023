@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://40a3t6sagrxg" path="res://resources/sprites/sprite_house_01.png" id="1_0m6as"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k5eap"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_faytp"]
 atlas = ExtResource("1_0m6as")
-region = Rect2(0, 336, 42, 42)
+region = Rect2(42, 336, 42, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egq3r"]
 atlas = ExtResource("1_0m6as")
@@ -26,7 +26,7 @@ region = Rect2(0, 336, 42, 42)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k5eap")
+"texture": SubResource("AtlasTexture_faytp")
 }],
 "loop": true,
 "name": &"default",
@@ -41,6 +41,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dtj21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxn7i")
 }],
 "loop": true,
 "name": &"fire",

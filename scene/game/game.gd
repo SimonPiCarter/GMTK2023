@@ -4,6 +4,7 @@ extends Node2D
 @onready var editor = $VBoxContainer/HBoxContainer/Editor
 @onready var box = $VBoxContainer/ScrollContainer/box
 @onready var mute = $mute
+@onready var win_timer = $win_timer
 
 var items : Array[Item] = []
 
@@ -17,6 +18,9 @@ var level : Level = Level.new()
 
 var sound : SoundManager = null
 
+var over : bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# connecting signals
@@ -29,9 +33,18 @@ func _ready():
 	$Grid.case_entered.connect(entered)
 	$Grid.case_exited.connect(exited)
 
+	win_timer.timeout.connect(win)
+
 	reload()
 
+func win():
+	$win_screen.show()
+	over = true
+	sound.play_win()
+	win_timer.stop()
+
 func reload():
+	over = false
 	if sound:
 		sound.play_fire(0)
 	# clear
@@ -61,7 +74,9 @@ func reload():
 
 	var prefab = 0
 	for qty in level.items:
-		if qty > 0:
+		var is_cat : bool = loader.prefabs_loaded[prefab].object.is_cat()
+		var need_cat : bool = $Grid.has_trees()
+		if (not is_cat and qty > 0) or (is_cat and need_cat):
 			var child = preload("res://scene/UI/item.tscn").instantiate()
 			box.add_child(child)
 			child.set_prefab(loader.prefabs_loaded[prefab])
@@ -93,15 +108,24 @@ func mute_sound():
 		sound.unmute()
 
 func select(item : Item):
+	if over:
+		return
 	reset_all_items()
-	if item.object.qty > 0:
+	if item.object.qty > 0 and not item.object.is_cat():
 		current_item = item
 		current_item.tex.material.set_shader_parameter("width", 1.)
+
+	if item.object.is_cat() and $Grid.check_all_case_on_fire():
+		sound.play_cat()
+		$Grid.place_cats()
+		win_timer.start(1)
 
 	if sound:
 		sound.play_clic()
 
 func clicked(x, y):
+	if over:
+		return
 	if current_item:
 		var current_obj = current_item.object
 		var cases = current_obj.get_case(Vector2(x,y), $Grid)
@@ -120,16 +144,13 @@ func clicked(x, y):
 			# min 1 if one case on fire
 			sound.play_fire(max(min(1, nb_on_fire), int(nb_on_fire / 3.)))
 
-		if $Grid.check_all_case_on_fire():
-			$win_screen.show()
-			sound.play_win()
-		elif no_more_items():
+		if $Grid.check_cats_on_tree():
+			win()
+		elif (no_more_items() and not $Grid.check_all_case_on_fire()) or $Grid.tree_on_fire():
 			$lose_screen.show()
 			sound.play_lose()
 		else:
 			$Grid.decrease_timer()
-
-
 
 	reset_all_items()
 
@@ -139,12 +160,14 @@ func clicked(x, y):
 ## lose condition
 func no_more_items() -> bool:
 	for item in items:
-		if item.object.qty > 0:
+		if item.object.qty > 0 and not item.object.is_cat():
 			return false
 	return true
 
 ## Event handling
 func entered(x, y):
+	if over:
+		return
 	if current_item:
 		$Grid.reset_all_markers()
 		current_case = Vector2i(x,y)

@@ -47,12 +47,24 @@
 			],
 			"qty":1,
 			"texture":"res://resources/objects/fire_ludr.tres"
+		},
+		{
+			"id":"cat",
+			"objects":[
+				{
+					"type":"Cat",
+					"size":0
+				}
+			],
+			"qty":1,
+			"texture":"res://resources/objects/cat.tres"
 		}
 	],
 	"case_prefabs":[
 		{
 			"is_protected" : false,
 			"is_forbidden" : false,
+			"is_tree" : false,
 			"fire_duration" : 0,
 			"frames" :
 			[
@@ -64,6 +76,7 @@
 		{
 			"is_protected" : false,
 			"is_forbidden" : false,
+			"is_tree" : false,
 			"fire_duration" : 0,
 			"frames" :
 			[
@@ -75,12 +88,26 @@
 		{
 			"is_protected" : false,
 			"is_forbidden" : false,
+			"is_tree" : false,
 			"fire_duration" : 0,
 			"frames" :
 			[
 				"res://resources/frames/house_3_1.tres",
 				"res://resources/frames/house_3_2.tres",
 				"res://resources/frames/house_3_3.tres"
+			]
+		},
+		{
+			"is_protected" : false,
+			"is_forbidden" : true,
+			"is_tree" : true,
+			"fire_duration" : 0,
+			"frames" :
+			[
+				"res://resources/frames/tree_1.tres",
+				"res://resources/frames/tree_2.tres",
+				"res://resources/frames/tree_3.tres",
+				"res://resources/frames/tree_4.tres"
 			]
 		}
 	]

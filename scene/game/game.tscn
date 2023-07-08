@@ -83,3 +83,5 @@ offset_bottom = 65.0
 toggle_mode = true
 texture_normal = ExtResource("4_fky37")
 texture_pressed = ExtResource("5_7spfk")
+
+[node name="win_timer" type="Timer" parent="."]

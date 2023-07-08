@@ -51,6 +51,7 @@ func read(path : String):
 			loaded.is_protected = prefab["is_protected"]
 			loaded.is_forbidden = prefab["is_forbidden"]
 			loaded.fire_duration = prefab["fire_duration"]
+			loaded.is_tree = prefab["is_tree"]
 			prefabs_case_loaded.push_back(loaded)
 
 	else:
@@ -82,6 +83,8 @@ func readObject(data) -> GridObject:
 		object = LineYObject.new()
 		if size >= 0:
 			object.size_y = size
+	elif data["type"] == "Cat":
+		object = CatObject.new()
 	else:
 		push_error("Could not read object from ", data)
 	return object

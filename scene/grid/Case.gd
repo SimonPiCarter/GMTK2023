@@ -5,6 +5,8 @@ var SIZE_ORIG = 42
 var SIZE = 126
 
 var prefab_idx : int = 0
+var is_tree : bool = false
+var cat_placed : bool = false
 var in_flame : bool = false
 var timer : int = 0
 var fire_duration : int = 3
@@ -46,6 +48,7 @@ func set_from_prefab(prefab : prefab_case):
 	var rng = RandomNumberGenerator.new()
 	$Sprite.sprite_frames = prefab.frames[rng.randi_range(0, prefab.frames.size()-1)]
 	fire_duration = prefab.fire_duration
+	is_tree = prefab.is_tree
 	prefab_idx = prefab.idx
 
 func decrease_timer():
@@ -61,16 +64,21 @@ func stop_fire():
 	in_flame = false
 
 	$Sprite.play("default")
-	#$Sprite.material.set_shader_parameter("color", Vector4(1,1,1,1))
 
 func start_fire():
 	if empty:
 		return
 
 	in_flame = true
-	timer = fire_duration
 
-	$Sprite.play("fire")
-	#$Sprite.material.set_shader_parameter("color", Vector4(1,0,0,1))
+	if not is_tree:
+		$Sprite.play("fire")
+		timer = fire_duration
+		label.text = String.num_int64(timer)
 
-	label.text = String.num_int64(timer)
+
+func place_cat():
+	if empty or not is_tree:
+		return
+	$Sprite.play("cat")
+	cat_placed = true

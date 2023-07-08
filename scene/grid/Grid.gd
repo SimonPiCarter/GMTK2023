@@ -51,7 +51,7 @@ func exited(i ,j):
 
 func check_all_case_on_fire() -> bool:
 	for elt in data:
-		if not elt.empty and not elt.in_flame:
+		if not elt.empty and not elt.is_tree and not elt.in_flame:
 			return false
 	return true
 
@@ -61,6 +61,29 @@ func get_nb_case_on_fire() -> int:
 		if not elt.empty and elt.in_flame:
 			nb += 1
 	return nb
+
+func has_trees() -> bool:
+	for elt in data:
+		if not elt.empty and elt.is_tree:
+			return true
+	return false
+
+func tree_on_fire() -> bool:
+	for elt in data:
+		if not elt.empty and elt.is_tree and elt.in_flame:
+			return true
+	return false
+
+func check_cats_on_tree() -> bool:
+	for elt in data:
+		if not elt.empty and elt.is_tree and not elt.cat_placed:
+			return false
+	return true
+
+func place_cats():
+	for elt in data:
+		if not elt.empty and elt.is_tree:
+			elt.place_cat()
 
 func reset_all_markers():
 	for elt in data:

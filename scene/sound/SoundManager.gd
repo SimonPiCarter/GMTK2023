@@ -7,6 +7,7 @@ class_name SoundManager extends Node
 @onready var fire_player_1 = $fire_player_1
 @onready var fire_player_2 = $fire_player_3
 @onready var fire_player_3 = $fire_player_2
+@onready var cat_player = $cat_player
 
 var muted : bool = false
 var fire_level : int = 0
@@ -73,3 +74,8 @@ func play_fire(lvl : int):
 		fire_player_1.stop()
 		fire_player_2.stop()
 		fire_player_3.play()
+
+func play_cat():
+	if muted:
+		return
+	cat_player.play()

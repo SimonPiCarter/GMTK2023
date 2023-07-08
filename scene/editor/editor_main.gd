@@ -85,7 +85,8 @@ func reload():
 		var child = preload("res://scene/UI/item.tscn").instantiate()
 		box.add_child(child)
 		child.set_prefab(prefab)
-		child.set_qty(level.items[prefab_idx])
+		if prefab_idx < level.items.size():
+			child.set_qty(level.items[prefab_idx])
 		items.push_back(child)
 		child.tex.pressed.connect(select.bind(child))
 		prefab_idx += 1
