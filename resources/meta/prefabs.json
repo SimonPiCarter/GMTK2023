@@ -54,55 +54,34 @@
 			"is_protected" : false,
 			"is_forbidden" : false,
 			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_1_1.tres"
+			"frames" :
+			[
+				"res://resources/frames/house_1_1.tres",
+				"res://resources/frames/house_1_2.tres",
+				"res://resources/frames/house_1_3.tres"
+			]
 		},
 		{
 			"is_protected" : false,
 			"is_forbidden" : false,
 			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_2_1.tres"
+			"frames" :
+			[
+				"res://resources/frames/house_2_1.tres",
+				"res://resources/frames/house_2_2.tres",
+				"res://resources/frames/house_2_3.tres"
+			]
 		},
 		{
 			"is_protected" : false,
 			"is_forbidden" : false,
 			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_3_1.tres"
-		},
-		{
-			"is_protected" : false,
-			"is_forbidden" : false,
-			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_1_2.tres"
-		},
-		{
-			"is_protected" : false,
-			"is_forbidden" : false,
-			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_2_2.tres"
-		},
-		{
-			"is_protected" : false,
-			"is_forbidden" : false,
-			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_3_2.tres"
-		},
-		{
-			"is_protected" : false,
-			"is_forbidden" : false,
-			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_1_3.tres"
-		},
-		{
-			"is_protected" : false,
-			"is_forbidden" : false,
-			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_2_3.tres"
-		},
-		{
-			"is_protected" : false,
-			"is_forbidden" : false,
-			"fire_duration" : 0,
-			"frames" : "res://resources/frames/house_3_3.tres"
+			"frames" :
+			[
+				"res://resources/frames/house_3_1.tres",
+				"res://resources/frames/house_3_2.tres",
+				"res://resources/frames/house_3_3.tres"
+			]
 		}
 	]
 }

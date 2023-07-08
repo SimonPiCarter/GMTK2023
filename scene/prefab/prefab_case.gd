@@ -4,4 +4,4 @@ var idx : int = 0
 var is_protected = false
 var is_forbidden = false
 var fire_duration : int = 3
-var frames : SpriteFrames = preload("res://resources/frames/house_1_1.tres")
+var frames : Array[SpriteFrames] = [preload("res://resources/frames/house_1_1.tres")]

@@ -14,4 +14,4 @@ func set_prefab(new_prefab : prefab_case):
 	reset()
 
 func reset():
-	tex.texture_normal = prefab.frames.get_frame_texture("default",0)
+	tex.texture_normal = prefab.frames[0].get_frame_texture("default",0)

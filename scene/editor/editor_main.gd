@@ -162,7 +162,7 @@ func clicked(x, y):
 ## Event handling
 func entered(x, y):
 	if current_item:
-		$Grid.get_elt(x,y).item.texture = current_item.prefab.frames.get_frame_texture("default",0)
+		$Grid.get_elt(x,y).item.texture = current_item.prefab.frames[0].get_frame_texture("default",0)
 		$Grid.get_elt(x,y).item.show()
 
 	else:

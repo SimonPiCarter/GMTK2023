@@ -45,7 +45,9 @@ func read(path : String):
 			loaded.idx = idx
 			idx += 1
 
-			loaded.frames = load(prefab["frames"])
+			loaded.frames.clear()
+			for frame in prefab["frames"]:
+				loaded.frames.push_back(load(frame))
 			loaded.is_protected = prefab["is_protected"]
 			loaded.is_forbidden = prefab["is_forbidden"]
 			loaded.fire_duration = prefab["fire_duration"]

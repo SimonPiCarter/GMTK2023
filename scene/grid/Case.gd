@@ -43,7 +43,8 @@ func set_empty(e : bool):
 
 func set_from_prefab(prefab : prefab_case):
 	set_empty(false)
-	$Sprite.sprite_frames = prefab.frames
+	var rng = RandomNumberGenerator.new()
+	$Sprite.sprite_frames = prefab.frames[rng.randi_range(0, prefab.frames.size()-1)]
 	fire_duration = prefab.fire_duration
 	prefab_idx = prefab.idx
 
