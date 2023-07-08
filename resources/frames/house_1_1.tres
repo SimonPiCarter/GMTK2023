@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://nhj1tox0ylo1"]
+
+[ext_resource type="Texture2D" uid="uid://btpe0jiktbe7t" path="res://resources/test_sprite_maison.png" id="1_bpcfd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t88ck"]
+atlas = ExtResource("1_bpcfd")
+region = Rect2(0, 0, 40, 40)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t88ck")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t88ck")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]

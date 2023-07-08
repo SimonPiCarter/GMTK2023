@@ -29,28 +29,29 @@ func reload():
 	items.clear()
 	$win_screen.hide()
 	$lose_screen.hide()
+	current_item = null
 
 	# loading level
 	$Grid.resize(5,5)
 	$Grid.position = Vector2($Grid.SIZE/2 + grid_margin,$Grid.SIZE/2 + grid_margin)
 
-	$Grid.get_elt(0, 1).set_empty(false)
-	$Grid.get_elt(2, 1).set_empty(false)
-	$Grid.get_elt(4, 1).set_empty(false)
-	$Grid.get_elt(2, 2).set_empty(false)
-	$Grid.get_elt(0, 2).set_empty(false)
+	# meta data
+	var loader = JsonLoader.new()
+	loader.read("res://resources/meta/prefabs.json")
 
-	var prefabs : Array[prefab_item] = []
-	prefabs.push_back(x_object_0.new())
-	prefabs.push_back(x_object_1.new())
-	prefabs.push_back(y_object_0.new())
-	prefabs.push_back(cross_object_1.new())
+	# level
+
+	$Grid.get_elt(0, 1).set_from_prefab(loader.prefabs_case_loaded[0])
+	$Grid.get_elt(2, 1).set_from_prefab(loader.prefabs_case_loaded[0])
+	$Grid.get_elt(4, 1).set_from_prefab(loader.prefabs_case_loaded[0])
+	$Grid.get_elt(2, 2).set_from_prefab(loader.prefabs_case_loaded[1])
+	$Grid.get_elt(0, 2).set_from_prefab(loader.prefabs_case_loaded[1])
 
 	# loading items
 	for child in box.get_children():
 		child.queue_free()
 
-	for prefab in prefabs:
+	for prefab in loader.prefabs_loaded:
 		var child = preload("res://scene/UI/item.tscn").instantiate()
 		box.add_child(child)
 		child.set_prefab(prefab)

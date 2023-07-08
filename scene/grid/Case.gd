@@ -35,6 +35,11 @@ func set_empty(e : bool):
 		$Sprite.show()
 		label.show()
 
+func set_from_prefab(prefab : prefab_case):
+	set_empty(false)
+	$Sprite.sprite_frames = prefab.frames
+	fire_duration = prefab.fire_duration
+
 func decrease_timer():
 	if timer == 1:
 		stop_fire()
