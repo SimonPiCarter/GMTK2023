@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0g15ta87kvho"]
+
+[ext_resource type="PackedScene" uid="uid://dvw5eg55wpiwp" path="res://scene/test/dialog.tscn" id="1_olnvd"]
+[ext_resource type="Script" path="res://scene/test/test_dialog.gd" id="1_vv0ie"]
+
+[node name="test_dialog" type="Node2D"]
+script = ExtResource("1_vv0ie")
+
+[node name="dialog" parent="." instance=ExtResource("1_olnvd")]
+position = Vector2(574, 406)

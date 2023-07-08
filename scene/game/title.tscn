@@ -1,7 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6uxr8kib0gs2"]
+[gd_scene load_steps=14 format=3 uid="uid://b6uxr8kib0gs2"]
 
 [ext_resource type="PackedScene" uid="uid://b60un4x6w0jyi" path="res://scene/sound/SoundManager.tscn" id="1_c3qa1"]
 [ext_resource type="Script" path="res://scene/game/title.gd" id="1_t2nht"]
+[ext_resource type="Texture2D" uid="uid://bvoj75hdm83ts" path="res://resources/sprites/sprite_camion_01.png" id="2_2sua1"]
+[ext_resource type="Texture2D" uid="uid://t0vr33fswuho" path="res://resources/sprites/sprite_title_01.png" id="3_r1wxo"]
+[ext_resource type="Texture2D" uid="uid://dw8ciu6uf6cw2" path="res://resources/textures/play_1.tres" id="4_sogup"]
+[ext_resource type="Texture2D" uid="uid://j2vw8wqgjbsq" path="res://resources/textures/play_3.tres" id="5_i2upl"]
+[ext_resource type="Texture2D" uid="uid://cre4121bjpw0p" path="res://resources/textures/play_2.tres" id="6_fqfmp"]
+[ext_resource type="SpriteFrames" uid="uid://btx2t126btr48" path="res://resources/frames/intro_anim.tres" id="7_g3kf0"]
+
+[sub_resource type="Animation" id="Animation_jsoyv"]
+resource_name = "title"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_un8tm"]
+resource_name = "truck_move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(250, 100), Vector2(-100, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_vejhl"]
+resource_name = "truck_move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.287175),
+"update": 0,
+"values": [Vector2(250, 100), Vector2(150, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_6gx4r"]
+resource_name = "fade"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3eylh"]
+_data = {
+"fade": SubResource("Animation_6gx4r"),
+"title": SubResource("Animation_jsoyv"),
+"truck_move": SubResource("Animation_un8tm"),
+"truck_move_2": SubResource("Animation_vejhl")
+}
 
 [node name="title" type="Control"]
 layout_mode = 3
@@ -12,19 +89,119 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t2nht")
 
-[node name="sound" parent="." instance=ExtResource("1_c3qa1")]
-
-[node name="Button" type="Button" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play"
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1200, 900)
+size_2d_override = Vector2i(200, 120)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+position = Vector2(100, 60)
+sprite_frames = ExtResource("7_g3kf0")
+
+[node name="title" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(100, 38)
+texture = ExtResource("3_r1wxo")
+
+[node name="truck" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+position = Vector2(250, 100)
+texture = ExtResource("2_2sua1")
+
+[node name="sound" parent="." instance=ExtResource("1_c3qa1")]
+
+[node name="Play" type="TextureButton" parent="."]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -223.0
+offset_right = 40.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_sogup")
+texture_pressed = ExtResource("5_i2upl")
+texture_hover = ExtResource("6_fqfmp")
+stretch_mode = 5
+
+[node name="Editor" type="TextureButton" parent="."]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -182.0
+offset_right = 41.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_sogup")
+texture_pressed = ExtResource("5_i2upl")
+texture_hover = ExtResource("6_fqfmp")
+stretch_mode = 5
+
+[node name="Custom" type="TextureButton" parent="."]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -139.0
+offset_right = 42.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_sogup")
+texture_pressed = ExtResource("5_i2upl")
+texture_hover = ExtResource("6_fqfmp")
+stretch_mode = 5
+
+[node name="Timer_fade" type="Timer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../SubViewportContainer/SubViewport/title")
+libraries = {
+"": SubResource("AnimationLibrary_3eylh")
+}
+
+[node name="black" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

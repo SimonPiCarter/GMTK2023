@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b60un4x6w0jyi"]
+[gd_scene load_steps=11 format=3 uid="uid://b60un4x6w0jyi"]
 
 [ext_resource type="AudioStream" uid="uid://cbgxcobigdiuk" path="res://resources/sounds/Musique_menu_mixage_master_0dB_Low_up.mp3" id="1_jlpwn"]
 [ext_resource type="Script" path="res://scene/sound/SoundManager.gd" id="1_wqbob"]
+[ext_resource type="AudioStream" uid="uid://b0udvjnbpc35v" path="res://resources/sounds/adventure_test_norme_up_reverb_arrangement_intro.mp3" id="3_4g8a6"]
 [ext_resource type="AudioStream" uid="uid://dgpdfchgc8l7v" path="res://resources/sounds/Clic_selection_4.wav" id="3_u4ooe"]
 [ext_resource type="AudioStream" uid="uid://m3qjs6ei37m0" path="res://resources/sounds/Victoire_up_6.wav" id="4_uphok"]
 [ext_resource type="AudioStream" uid="uid://cyfubs6yrpvbk" path="res://resources/sounds/Feu_maison_1_up.wav" id="5_ong8y"]
@@ -15,6 +16,11 @@ script = ExtResource("1_wqbob")
 
 [node name="music_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_jlpwn")
+volume_db = -6.0
+bus = &"Music"
+
+[node name="intro_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4g8a6")
 volume_db = -6.0
 bus = &"Music"
 

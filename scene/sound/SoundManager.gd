@@ -1,6 +1,7 @@
 class_name SoundManager extends Node
 
 @onready var music_player = $music_player
+@onready var intro_player = $intro_player
 @onready var clic_player = $clic_player
 @onready var win_player = $win_player
 @onready var lose_player = $lose_player
@@ -29,15 +30,24 @@ func unmute():
 func _ready():
 	if muted:
 		return
-	play_music(true)
 
 func play_music(play : bool):
 	if muted:
 		return
 	if play:
 		music_player.play()
+		intro_player.stop()
 	else:
 		music_player.stop()
+
+func play_intro(play : bool):
+	if muted:
+		return
+	if play:
+		intro_player.play()
+		music_player.stop()
+	else:
+		intro_player.stop()
 
 func play_clic():
 	if muted:
