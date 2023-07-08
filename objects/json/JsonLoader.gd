@@ -33,6 +33,7 @@ func read(path : String):
 					loaded.object.sub_objects.push_back(readObject(sub_object))
 
 			loaded.texture = load(prefab["texture"])
+			loaded.texture_disabled = load(prefab["texture_disabled"])
 			loaded.qty = prefab["qty"]
 
 			prefabs_loaded.push_back(loaded)

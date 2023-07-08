@@ -83,6 +83,8 @@ func reload():
 			child.set_qty(qty)
 			items.push_back(child)
 			child.tex.pressed.connect(select.bind(child))
+			if is_cat and not $Grid.check_all_case_on_fire():
+				child.disable()
 		prefab += 1
 
 func editor_load():
@@ -143,6 +145,11 @@ func clicked(x, y):
 
 			# min 1 if one case on fire
 			sound.play_fire(max(min(1, nb_on_fire), int(nb_on_fire / 3.)))
+
+		if $Grid.check_all_case_on_fire():
+			for item in items:
+				if item.object.is_cat():
+					item.enable()
 
 		if $Grid.check_all_case_on_fire() and $Grid.check_cats_on_tree():
 			win()

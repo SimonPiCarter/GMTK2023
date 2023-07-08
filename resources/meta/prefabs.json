@@ -9,7 +9,8 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/fire_0.tres"
+			"texture":"res://resources/objects/fire_0.tres",
+			"texture_disabled":"res://resources/objects/fire_0.tres"
 		},
 		{
 			"id":"3X",
@@ -20,7 +21,8 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/fire_lr.tres"
+			"texture":"res://resources/objects/fire_lr.tres",
+			"texture_disabled":"res://resources/objects/fire_lr.tres"
 		},
 		{
 			"id":"3Y",
@@ -31,7 +33,8 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/fire_ud.tres"
+			"texture":"res://resources/objects/fire_ud.tres",
+			"texture_disabled":"res://resources/objects/fire_ud.tres"
 		},
 		{
 			"id":"cross",
@@ -46,7 +49,8 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/fire_ludr.tres"
+			"texture":"res://resources/objects/fire_ludr.tres",
+			"texture_disabled":"res://resources/objects/fire_ludr.tres"
 		},
 		{
 			"id":"cat",
@@ -57,7 +61,8 @@
 				}
 			],
 			"qty":1,
-			"texture":"res://resources/objects/cat.tres"
+			"texture":"res://resources/objects/cat.tres",
+			"texture_disabled":"res://resources/objects/cat_bw.tres"
 		}
 	],
 	"case_prefabs":[

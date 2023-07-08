@@ -4,6 +4,8 @@ class_name Item extends Control
 
 var object : GridObject = null
 
+var disabled : bool = false
+
 @onready var tex = $tex
 @onready var qty_label = $qty_label
 
@@ -33,3 +35,11 @@ func use():
 func set_qty(new_qty : int):
 	object.qty = new_qty
 	qty_label.text = String.num_int64(object.qty)
+
+func disable():
+	disabled = true
+	tex.texture_normal = prefab.texture_disabled
+
+func enable():
+	disabled = false
+	tex.texture_normal = prefab.texture
