@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="web_test"
-run/main_scene="res://scene/test/test_grid.tscn"
+run/main_scene="res://scene/game/game.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
