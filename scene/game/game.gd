@@ -20,7 +20,7 @@ var level : Level = Level.new()
 var sound : SoundManager = null
 
 var over : bool = false
-
+var all_on_fire : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,6 +55,7 @@ func back_to_menu():
 
 func reload():
 	over = false
+	all_on_fire = false
 	if sound:
 		sound.play_fire(0)
 	# clear
@@ -128,7 +129,7 @@ func select(item : Item):
 	if over:
 		return
 	reset_all_items()
-	if item.object.qty > 0 and not item.object.is_cat():
+	if item.object.qty > 0 and not item.object.is_cat() and not all_on_fire:
 		current_item = item
 		current_item.highlight()
 
@@ -165,6 +166,7 @@ func clicked(x, y):
 			for item in items:
 				if item.object.is_cat():
 					item.enable()
+			all_on_fire = true
 
 		if $Grid.check_all_case_on_fire() and $Grid.check_cats_on_tree():
 			win()
@@ -173,7 +175,7 @@ func clicked(x, y):
 			$lose_screen.show()
 			if sound:
 				sound.play_lose()
-		else:
+		elif not all_on_fire:
 			$Grid.decrease_timer()
 
 	reset_all_items()
