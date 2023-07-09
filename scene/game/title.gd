@@ -88,7 +88,6 @@ func set_up_title():
 
 func startPlay():
 	var game = load("res://scene/game/game.tscn").instantiate()
-	# game.set_levels(["01z2z24e204r1z3e1111"])
 
 	var script_tuto_1 = dialog_script.new()
 	script_tuto_1.texts.push_back("See this house? How it is not burning ? We need to act fast and burn it before anyone gets hurt!")
@@ -96,7 +95,7 @@ func startPlay():
 	game.scripts.push_back(script_tuto_1)
 
 	var script_tuto_2 = dialog_script.new()
-	script_tuto_2.texts.push_back("Thanks to our very well designed firefighter gears we can light multiple houses at a time. Check it out. Be wary supply may be limite.")
+	script_tuto_2.texts.push_back("Thanks to our very well designed firefighter gears we can light multiple houses at a time. Check it out. Be wary supply may be limited.")
 	script_tuto_2.types.push_back(dialog_script.Type.Firefighter)
 	game.scripts.push_back(script_tuto_2)
 
