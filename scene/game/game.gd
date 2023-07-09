@@ -216,7 +216,7 @@ func select(item : Item):
 		current_item = item
 		current_item.highlight()
 
-	if item.object.is_cat() and $Grid.check_all_case_on_fire():
+	if item.object.is_cat() and $Grid.check_all_case_on_fire() and not $Grid.check_cats_on_tree():
 		sound.play_cat()
 		$Grid.place_cats()
 		win_timer.start(1)
