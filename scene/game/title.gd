@@ -43,6 +43,8 @@ func switch_scene():
 func cond_start(anim):
 	if anim == "fade_out":
 		start_dialog()
+	if anim == "truck_move_title":
+		player.play("title_scale")
 
 func start_dialog():
 	diag_r.set_text("911, what's your emergency?")
@@ -108,7 +110,9 @@ func startPlay():
 	game.scripts.push_back(script_tuto_2)
 
 	var script_tuto_3 = dialog_script.new()
-	script_tuto_3.texts.push_back("Oh no! This house is particularly resistant to fire! It will burn less long, and that's a problem ! When you set a house on fire always check the conveniently placed timer to know when it will stop burning.")
+	script_tuto_3.texts.push_back("Oh no! This house is particularly resistant to fire! It will burn less long, and that's a problem !")
+	script_tuto_3.texts.push_back("When you set a house on fire always check the conveniently placed timer to know when it will stop burning.")
+	script_tuto_3.types.push_back(dialog_script.Type.Firefighter)
 	script_tuto_3.types.push_back(dialog_script.Type.Firefighter)
 	game.scripts.push_back(script_tuto_3)
 
@@ -117,7 +121,7 @@ func startPlay():
 	script_tuto_4.types.push_back(dialog_script.Type.Firefighter)
 	script_tuto_4.texts.push_back("Please! my poor cat fell of the tree, help him climb back on it!")
 	script_tuto_4.types.push_back(dialog_script.Type.Grandma)
-	script_tuto_4.texts.push_back("Of course ! We just need to deal with all the fire before! Just to ensure your cat is safe")
+	script_tuto_4.texts.push_back("Of course ! We just need to deal with all the fire before! Just to ensure your cat is safe.")
 	script_tuto_4.types.push_back(dialog_script.Type.Firefighter)
 	game.scripts.push_back(script_tuto_4)
 

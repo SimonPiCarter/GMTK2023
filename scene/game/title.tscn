@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b6uxr8kib0gs2"]
+[gd_scene load_steps=28 format=3 uid="uid://b6uxr8kib0gs2"]
 
 [ext_resource type="PackedScene" uid="uid://b60un4x6w0jyi" path="res://scene/sound/SoundManager.tscn" id="1_c3qa1"]
 [ext_resource type="Script" path="res://scene/game/title.gd" id="1_t2nht"]
@@ -15,7 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://dvw5eg55wpiwp" path="res://scene/test/dialog.tscn" id="12_vd6ty"]
 [ext_resource type="Texture2D" uid="uid://dbm4tx1o3h8vw" path="res://resources/textures/custom_3.tres" id="13_8u68l"]
 [ext_resource type="Texture2D" uid="uid://d2yg3iwso6ihj" path="res://resources/textures/custom_2.tres" id="14_fcacy"]
+[ext_resource type="Texture2D" uid="uid://ddvo8nfra8ew4" path="res://resources/textures/credits_1.tres" id="15_u53sd"]
 [ext_resource type="FontFile" uid="uid://cm6obuloir356" path="res://resources/font/m3x6.ttf" id="16_5ak4k"]
+[ext_resource type="Texture2D" uid="uid://dj6pr1v8yrg4v" path="res://resources/textures/credits_3.tres" id="16_en0j4"]
+[ext_resource type="Texture2D" uid="uid://chhdnx2sqj8y4" path="res://resources/textures/credits_2.tres" id="17_tpxog"]
 
 [sub_resource type="Animation" id="Animation_6gx4r"]
 resource_name = "fade"
@@ -191,6 +194,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../../Credits:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../../../Credits:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_as5wm"]
 resource_name = "fade"
@@ -208,11 +235,28 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_twgiy"]
+resource_name = "title_scale"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1.05, 1), Vector2(0.95, 0.95)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3eylh"]
 _data = {
 "fade": SubResource("Animation_6gx4r"),
 "fade_out": SubResource("Animation_as5wm"),
 "title": SubResource("Animation_jsoyv"),
+"title_scale": SubResource("Animation_twgiy"),
 "truck_move": SubResource("Animation_un8tm"),
 "truck_move_2": SubResource("Animation_vejhl"),
 "truck_move_title": SubResource("Animation_7tnxw")
@@ -251,7 +295,8 @@ sprite_frames = ExtResource("7_g3kf0")
 [node name="title" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-position = Vector2(100, 38)
+position = Vector2(100, 39)
+scale = Vector2(1.04722, 0.998612)
 texture = ExtResource("3_r1wxo")
 
 [node name="truck" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
@@ -350,6 +395,26 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
+[node name="Credits" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -57.0
+offset_right = 142.0
+offset_bottom = -17.0
+grow_vertical = 0
+disabled = true
+texture_normal = ExtResource("15_u53sd")
+texture_pressed = ExtResource("16_en0j4")
+texture_hover = ExtResource("17_tpxog")
+texture_disabled = ExtResource("15_u53sd")
+stretch_mode = 6
+
 [node name="diag_r" parent="." instance=ExtResource("12_vd6ty")]
 visible = false
 position = Vector2(931, 228)
@@ -370,3 +435,46 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("16_5ak4k")
 theme_override_font_sizes/font_size = 32
 text = "Press SPACE to skip"
+
+[node name="credit_box" type="HBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -81.0
+offset_right = 300.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="credit" type="Label" parent="credit_box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("16_5ak4k")
+theme_override_font_sizes/font_size = 64
+text = "Siieg
+Clestial Musepi
+Simon Carter"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="credit_box"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="credit2" type="Label" parent="credit_box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("16_5ak4k")
+theme_override_font_sizes/font_size = 64
+text = "Visuals
+Musics & Sounds
+Development"

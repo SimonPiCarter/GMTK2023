@@ -16,11 +16,13 @@ texture = ExtResource("2_cm850")
 
 [node name="Label" type="Label" parent="dialog"]
 texture_filter = 1
-offset_left = -112.0
-offset_top = -38.0
-offset_right = 117.0
-offset_bottom = 39.0
+offset_left = -118.5
+offset_top = -44.5
+offset_right = 41.5
+offset_bottom = 83.5
+scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
 theme_override_fonts/font = ExtResource("3_oivgn")
 theme_override_font_sizes/font_size = 16
 text = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in\""
@@ -38,9 +40,8 @@ scale = Vector2(4, 4)
 sprite_frames = ExtResource("5_bj6ln")
 
 [node name="grandma" type="AnimatedSprite2D" parent="."]
-visible = false
 texture_filter = 1
-position = Vector2(-341, 0)
+position = Vector2(363, 1)
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("6_6dlqb")
 
