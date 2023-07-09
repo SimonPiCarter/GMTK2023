@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="web_test"
+config/name="Help! My house is (not) on fire"
 run/main_scene="res://scene/game/title.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://resources/sprites/sprite_camion_01.png"
+config/windows_native_icon="res://resources/icon.ico"
 
 [display]
 
