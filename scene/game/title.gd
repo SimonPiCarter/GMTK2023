@@ -66,7 +66,7 @@ func transition():
 	if state == 0:
 		diag_r.hide()
 		diag_l.show()
-		diag_l.set_text("Skrrrr... Please! Come fast! My... Skrrrr Skrrrr... Burning!")
+		diag_l.set_text("Skrrrr... Please! Come fast! My House... Skrrrr... Burning!")
 		diag_l.read()
 	if state == 1:
 		diag_l.hide()
@@ -74,6 +74,7 @@ func transition():
 		diag_r.set_text("Oh no! quick! That's a mission for us! Let's help this poor soul!")
 		diag_r.read()
 	if state == 2:
+		sound.play_truck()
 		diag_r.hide()
 		timer.start(2)
 		timer.timeout.connect(transition)
@@ -130,6 +131,13 @@ func startPlay():
 	script_tuto_4.types.push_back(dialog_script.Type.Firefighter)
 	game.scripts.push_back(script_tuto_4)
 
+	var script_tuto_5 = dialog_script.new()
+	script_tuto_5.texts.push_back("Mmmmh... That's a lot of cats.")
+	script_tuto_5.types.push_back(dialog_script.Type.Firefighter)
+	script_tuto_5.texts.push_back("...")
+	script_tuto_5.types.push_back(dialog_script.Type.Grandma)
+	game.scripts.push_back(script_tuto_5)
+
 	game.set_levels([ \
 		"ir1iz1u", \
 		"ir101iz1t", \
@@ -137,9 +145,9 @@ func startPlay():
 		"y1r3141e1y3e1r10", \
 		"34e44144r1434414434e1z2201", \
 		"0404r1410141404101404t1212r",\
-		"44e30104401433010444e1z2201", \
-		"y1e111r414043034z22010", \
-		"0413402414412323442010341545055040", \
+		#"44e30104401433010444e1z2201", \
+		"y1e111r414043034z12010", \
+		"z44044r4014r41041444e12z", \
 		"30101243e114e3214r21434203540", \
 		"2420101320141404022312401632212130", \
 		"02e431102243e2y1e21010", \
@@ -148,6 +156,7 @@ func startPlay():
 		"142r42404301324344414120934022030", \
 		"r21012032014031410142024984234440", \
 		"4140210134010240420210404944333251 ", \
+		"0413402414412323442010341545055040", \
 	])
 
 	Level.switch_level(self, game)
