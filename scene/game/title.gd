@@ -111,12 +111,12 @@ func startPlay():
 	game.scripts.push_back(script_tuto_1)
 
 	var script_tuto_2 = dialog_script.new()
-	script_tuto_2.texts.push_back("Thanks to our very well designed firefighter gears we can light multiple houses at a time. Check it out. Be wary supply may be limited.")
+	script_tuto_2.texts.push_back("Thanks to our very well designed firefighter gears we can light multiple houses at once. Check it out. Be wary supply may be limited.")
 	script_tuto_2.types.push_back(dialog_script.Type.Firefighter)
 	game.scripts.push_back(script_tuto_2)
 
 	var script_tuto_3 = dialog_script.new()
-	script_tuto_3.texts.push_back("Oh no! This house is particularly resistant to fire! It will burn less long, and that's a problem !")
+	script_tuto_3.texts.push_back("Oh no! This house is particularly resistant to fire! It will burn for shorter time, and that's a problem !")
 	script_tuto_3.texts.push_back("When you set a house on fire always check the conveniently placed timer to know when it will stop burning.")
 	script_tuto_3.types.push_back(dialog_script.Type.Firefighter)
 	script_tuto_3.types.push_back(dialog_script.Type.Firefighter)
@@ -141,11 +141,10 @@ func startPlay():
 	game.set_levels([ \
 		"ir1iz1u", \
 		"ir101iz1t", \
-		"y1r301z1y4u", \
+		"y2r302z2y4u", \
 		"y1r3141e1y3e1r10", \
 		"34e44144r1434414434e1z2201", \
 		"0404r1410141404101404t1212r",\
-		#"44e30104401433010444e1z2201", \
 		"y1e111r414043034z12010", \
 		"z44044r4014r41041444e12z", \
 		"30101243e114e3214r21434203540", \
@@ -157,6 +156,7 @@ func startPlay():
 		"r21012032014031410142024984234440", \
 		"4140210134010240420210404944333251 ", \
 		"0413402414412323442010341545055040", \
+		"4444444444444444444444444i", \
 	])
 
 	Level.switch_level(self, game)
