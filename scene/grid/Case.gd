@@ -76,7 +76,8 @@ func start_fire():
 	if not is_tree:
 		$Sprite.play("fire")
 		timer = fire_duration
-		label.show()
+		if fire_duration > 0:
+			label.show()
 		label.text = String.num_int64(timer)
 
 
