@@ -134,13 +134,15 @@ func play():
 
 func switch_eraser(state : bool):
 	eraser = state
+	if state:
+		select_case(current_item)
 
 func select_case(item : ItemCase):
 	reset_all_items()
 	if current_item == item:
 		current_item.lowlight()
 		current_item = null
-	else:
+	elif not current_item:
 		item.highlight()
 		current_item = item
 		eraser_toogle.button_pressed = false
