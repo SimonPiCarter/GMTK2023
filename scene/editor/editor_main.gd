@@ -54,6 +54,8 @@ func back_to_menu():
 		sound.play_intro(true)
 
 func mute_sound():
+	if not sound:
+		return
 	if mute.button_pressed:
 		sound.mute()
 	else:
@@ -139,10 +141,10 @@ func switch_eraser(state : bool):
 
 func select_case(item : ItemCase):
 	reset_all_items()
-	if current_item == item:
+	if current_item == item and current_item:
 		current_item.lowlight()
 		current_item = null
-	elif not current_item:
+	elif not current_item and item:
 		item.highlight()
 		current_item = item
 		eraser_toogle.button_pressed = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6uxr8kib0gs2"]
+[gd_scene load_steps=22 format=3 uid="uid://b6uxr8kib0gs2"]
 
 [ext_resource type="PackedScene" uid="uid://b60un4x6w0jyi" path="res://scene/sound/SoundManager.tscn" id="1_c3qa1"]
 [ext_resource type="Script" path="res://scene/game/title.gd" id="1_t2nht"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://i1id33oe18vb" path="res://resources/textures/editor_2.tres" id="10_65j8c"]
 [ext_resource type="Texture2D" uid="uid://blou1p5wy2gna" path="res://resources/textures/editor_3.tres" id="11_cbmul"]
 [ext_resource type="Texture2D" uid="uid://bk7ncd10bqlhh" path="res://resources/textures/custom_1.tres" id="12_k1rgl"]
+[ext_resource type="PackedScene" uid="uid://dvw5eg55wpiwp" path="res://scene/test/dialog.tscn" id="12_vd6ty"]
 [ext_resource type="Texture2D" uid="uid://dbm4tx1o3h8vw" path="res://resources/textures/custom_3.tres" id="13_8u68l"]
 [ext_resource type="Texture2D" uid="uid://d2yg3iwso6ihj" path="res://resources/textures/custom_2.tres" id="14_fcacy"]
 
@@ -199,6 +200,8 @@ texture_normal = ExtResource("9_cilej")
 texture_pressed = ExtResource("11_cbmul")
 texture_hover = ExtResource("10_65j8c")
 stretch_mode = 5
+
+[node name="dialog" parent="Editor" instance=ExtResource("12_vd6ty")]
 
 [node name="Custom" type="TextureButton" parent="."]
 visible = false
