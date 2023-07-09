@@ -20,10 +20,10 @@ func start_play():
 		game.set_levels([textEdit.text])
 		game.scripts.clear()
 
-	Level.switch_level(self, game)
+		Level.switch_level(self, game)
 
-	sound.play_fire(0)
-	sound.play_music(true)
+		sound.play_fire(0)
+		sound.play_music(true)
 
 func start_menu():
 	var title = load("res://scene/game/title.tscn").instantiate()
