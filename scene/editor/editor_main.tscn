@@ -1,20 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://yhm0sy077ms"]
+[gd_scene load_steps=9 format=3 uid="uid://yhm0sy077ms"]
 
 [ext_resource type="Script" path="res://scene/editor/editor_main.gd" id="1_4538q"]
 [ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="2_ji23c"]
+[ext_resource type="Texture2D" uid="uid://bladps82kq8ny" path="res://resources/sprites/sprite_background_02.png" id="2_ymys3"]
 [ext_resource type="Texture2D" uid="uid://bpydijg14ej5h" path="res://resources/textures/background.tres" id="3_kofnf"]
 [ext_resource type="PackedScene" uid="uid://bqa3dwbfunnwv" path="res://scene/UI/item.tscn" id="3_ynst2"]
 [ext_resource type="Texture2D" uid="uid://b7vgbbboycicp" path="res://resources/sprites/sound_on.tres" id="4_n5vi0"]
 [ext_resource type="Texture2D" uid="uid://6g70kibbf02e" path="res://resources/sprites/sound_off.tres" id="5_isddh"]
+[ext_resource type="Texture2D" uid="uid://qx374ho1luid" path="res://resources/sprites/sprite_cadre_01.png" id="5_yetpw"]
 
 [node name="editor_main" type="Node2D"]
 script = ExtResource("1_4538q")
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1200, 900)
+offset_right = 1200.0
+offset_bottom = 900.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 color = Color(0, 0.34902, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 372.0
+offset_top = 4.0
+offset_right = 814.0
+offset_bottom = 437.0
+texture = ExtResource("2_ymys3")
 
 [node name="Grid" parent="." instance=ExtResource("2_ji23c")]
 
@@ -55,6 +73,12 @@ texture_filter = 1
 position = Vector2(599, 767)
 scale = Vector2(4, 3)
 texture = ExtResource("3_kofnf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(600, 316)
+scale = Vector2(3, 3)
+texture = ExtResource("5_yetpw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 193.0

@@ -77,9 +77,9 @@ func reload():
 	$Grid.resize(5,5)
 	$Grid.position = Vector2(600-5*$Grid.SIZE/2+$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
 
-	$ColorRect.position.x = 600-5*$Grid.SIZE/2
-	$ColorRect.size.x = 5*$Grid.SIZE
-	$ColorRect.size.y = 5*$Grid.SIZE
+	$TextureRect.position.x = 600-5*$Grid.SIZE/2
+	$TextureRect.size.x = 5*$Grid.SIZE
+	$TextureRect.size.y = 5*$Grid.SIZE
 
 	# meta data
 	var loader = JsonLoader.new()
@@ -133,7 +133,7 @@ func play():
 	game.set_levels([serialize_label.text])
 	game.scripts.clear()
 
-	game.get_node("mute").button_pressed = mute.button_pressed
+	game.get_node("volume/mute").button_pressed = mute.button_pressed
 	Level.switch_level(self, game)
 
 func switch_eraser(state : bool):
