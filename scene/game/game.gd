@@ -98,6 +98,10 @@ func reload():
 		dialog.show()
 		dialog.set_scripts(scripts[current_level])
 		dialog.read()
+		if sound and sound.muted:
+			dialog.mute()
+		else:
+			dialog.unmute()
 	else:
 		started = true
 	over = false
@@ -170,8 +174,10 @@ func mute_sound():
 		return
 	if mute.button_pressed:
 		sound.mute()
+		dialog.mute()
 	else:
 		sound.unmute()
+		dialog.unmute()
 
 func select(item : Item):
 	if over or not started:

@@ -96,6 +96,9 @@ func mute():
 	muted = true
 	voice.stop()
 
+func unmute():
+	muted = false
+
 func speed_up(speed : bool = true):
 	if speed:
 		reading_speed = 200

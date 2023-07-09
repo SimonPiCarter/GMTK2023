@@ -86,7 +86,7 @@ grow_vertical = 0
 texture_normal = ExtResource("5_fnkeu")
 texture_pressed = ExtResource("6_1x16q")
 texture_hover = ExtResource("7_bhjyv")
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="Menu" type="TextureButton" parent="."]
 texture_filter = 1
@@ -106,4 +106,4 @@ grow_vertical = 0
 texture_normal = ExtResource("8_ogtbf")
 texture_pressed = ExtResource("9_pbped")
 texture_hover = ExtResource("10_syl47")
-stretch_mode = 5
+stretch_mode = 6
