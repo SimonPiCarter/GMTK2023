@@ -57,10 +57,10 @@ scale = Vector2(4, 3)
 texture = ExtResource("3_kofnf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 255.0
-offset_top = 641.0
-offset_right = 885.0
-offset_bottom = 911.0
+offset_left = 193.0
+offset_top = 644.0
+offset_right = 993.0
+offset_bottom = 914.0
 size_flags_vertical = 8
 metadata/_edit_group_ = true
 
@@ -72,7 +72,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(600, 90)
+custom_minimum_size = Vector2(800, 90)
 layout_mode = 2
 
 [node name="box" type="HBoxContainer" parent="VBoxContainer/ScrollContainer"]
@@ -92,17 +92,21 @@ layout_mode = 2
 layout_mode = 2
 text = "Play"
 
-[node name="Serialize" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Reload" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Reload"
 
-[node name="Restart" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Reset" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Restart"
+text = "Reset"
 
 [node name="Load" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Load Seed"
+
+[node name="Menu" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Menu"
 
 [node name="Eraser" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

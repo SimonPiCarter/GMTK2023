@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var menu = $VBoxContainer/HBoxContainer/Menu
 @onready var restart = $VBoxContainer/HBoxContainer/Restart
 @onready var editor = $VBoxContainer/HBoxContainer/Editor
 @onready var box = $VBoxContainer/ScrollContainer/box
@@ -25,6 +26,7 @@ var over : bool = false
 func _ready():
 	# connecting signals
 	$Step.pressed.connect($Grid.decrease_timer)
+	menu.pressed.connect(back_to_menu)
 	restart.pressed.connect(reload)
 	editor.pressed.connect(editor_load)
 	mute.pressed.connect(mute_sound)
@@ -40,8 +42,16 @@ func _ready():
 func win():
 	$win_screen.show()
 	over = true
-	sound.play_win()
+	if sound:
+		sound.play_win()
 	win_timer.stop()
+
+func back_to_menu():
+	var title = load("res://scene/game/title.tscn").instantiate()
+
+	Level.switch_level(self, title)
+	title.set_up_title()
+	sound.play_intro(true)
 
 func reload():
 	over = false
@@ -78,6 +88,8 @@ func reload():
 
 	var prefab = 0
 	for qty in level.items:
+		if prefab >= loader.prefabs_loaded.size():
+			break
 		var is_cat : bool = loader.prefabs_loaded[prefab].object.is_cat()
 		var need_cat : bool = $Grid.has_trees()
 		if (not is_cat and qty > 0) or (is_cat and need_cat):
@@ -97,15 +109,12 @@ func editor_load():
 	if sound:
 		sound.play_fire(0)
 
-	remove_child(sound)
-	scene.add_child(sound)
-	scene.sound = sound
 	scene.get_node("mute").button_pressed = mute.button_pressed
 
-	get_parent().add_child(scene)
+	Level.switch_level(self, scene)
+
 	scene.level.unserialize_level(level.serialize_level())
 	scene.reload()
-	queue_free()
 
 func mute_sound():
 	if not sound:

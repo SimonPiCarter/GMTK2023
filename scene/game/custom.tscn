@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckbd8pn442qwr"]
+
+[ext_resource type="Script" path="res://scene/game/custom.gd" id="1_hvey5"]
+[ext_resource type="SpriteFrames" uid="uid://btx2t126btr48" path="res://resources/frames/intro_anim.tres" id="2_n6c74"]
+[ext_resource type="Texture2D" uid="uid://t0vr33fswuho" path="res://resources/sprites/sprite_title_01.png" id="3_uumlw"]
+[ext_resource type="Texture2D" uid="uid://bvoj75hdm83ts" path="res://resources/sprites/sprite_camion_01.png" id="4_776t2"]
+[ext_resource type="Texture2D" uid="uid://dw8ciu6uf6cw2" path="res://resources/textures/play_1.tres" id="5_fnkeu"]
+[ext_resource type="Texture2D" uid="uid://j2vw8wqgjbsq" path="res://resources/textures/play_3.tres" id="6_1x16q"]
+[ext_resource type="Texture2D" uid="uid://cre4121bjpw0p" path="res://resources/textures/play_2.tres" id="7_bhjyv"]
+[ext_resource type="Texture2D" uid="uid://753w4vp6sjaw" path="res://resources/textures/menu_1.tres" id="8_ogtbf"]
+[ext_resource type="Texture2D" uid="uid://cd4eblpobm1xa" path="res://resources/textures/menu_3.tres" id="9_pbped"]
+[ext_resource type="Texture2D" uid="uid://3j8dogi7jale" path="res://resources/textures/menu_2.tres" id="10_syl47"]
+
+[node name="custom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hvey5")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1200, 900)
+size_2d_override = Vector2i(200, 120)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+position = Vector2(100, 60)
+sprite_frames = ExtResource("2_n6c74")
+animation = &"screen2"
+
+[node name="title" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+position = Vector2(100, 38)
+texture = ExtResource("3_uumlw")
+
+[node name="truck" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+position = Vector2(250, 100)
+texture = ExtResource("4_776t2")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -59.0
+offset_right = 200.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "Enter seed here"
+
+[node name="Play" type="TextureButton" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -115.0
+offset_right = 49.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_fnkeu")
+texture_pressed = ExtResource("6_1x16q")
+texture_hover = ExtResource("7_bhjyv")
+stretch_mode = 5
+
+[node name="Menu" type="TextureButton" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -151.0
+offset_right = 49.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("8_ogtbf")
+texture_pressed = ExtResource("9_pbped")
+texture_hover = ExtResource("10_syl47")
+stretch_mode = 5

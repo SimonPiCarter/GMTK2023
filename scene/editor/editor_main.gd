@@ -1,7 +1,8 @@
 extends Node2D
 
-@onready var reloader = $VBoxContainer/HBoxContainer/Serialize
-@onready var restarter = $VBoxContainer/HBoxContainer/Restart
+@onready var menu = $VBoxContainer/HBoxContainer/Menu
+@onready var reloader = $VBoxContainer/HBoxContainer/Reload
+@onready var restarter = $VBoxContainer/HBoxContainer/Reset
 @onready var laoder = $VBoxContainer/HBoxContainer/Load
 @onready var box = $VBoxContainer/ScrollContainer/box
 @onready var box_case = $VBoxContainer/ScrollContainer2/box
@@ -26,6 +27,7 @@ var level : Level = Level.new()
 func _ready():
 	# connecting signals
 	$Step.pressed.connect($Grid.decrease_timer)
+	menu.pressed.connect(back_to_menu)
 	restarter.pressed.connect(restart)
 	reloader.pressed.connect(reload)
 	laoder.pressed.connect(loadSeed)
@@ -41,6 +43,15 @@ func _ready():
 	eraser_toogle.toggled.connect(switch_eraser)
 
 	reload()
+
+func back_to_menu():
+	var title = load("res://scene/game/title.tscn").instantiate()
+
+	Level.switch_level(self, title)
+	title.set_up_title()
+
+	if sound:
+		sound.play_intro(true)
 
 func mute_sound():
 	if mute.button_pressed:
@@ -118,13 +129,8 @@ func play():
 	var game = load("res://scene/game/game.tscn").instantiate()
 	game.level.unserialize_level(Level.uncompress_string(serialize_label.text))
 
-	remove_child(sound)
-	game.add_child(sound)
-	game.sound = sound
 	game.get_node("mute").button_pressed = mute.button_pressed
-
-	get_parent().add_child(game)
-	queue_free()
+	Level.switch_level(self, game)
 
 func switch_eraser(state : bool):
 	eraser = state

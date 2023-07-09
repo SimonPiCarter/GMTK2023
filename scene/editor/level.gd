@@ -95,3 +95,18 @@ static func uncompress_string(string : String) -> String:
 	uncompressed = uncompressed.replace("e", "000")
 	uncompressed = uncompressed.replace("r", "00")
 	return uncompressed
+
+
+# ################ #
+# Level switch (with sound)
+# ################ #
+
+static func switch_level(from, to):
+	# transmit sound
+	if from.sound:
+		from.remove_child(from.sound)
+		to.add_child(from.sound)
+	to.sound = from.sound
+
+	from.get_parent().add_child(to)
+	from.queue_free()

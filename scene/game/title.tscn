@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6uxr8kib0gs2"]
+[gd_scene load_steps=21 format=3 uid="uid://b6uxr8kib0gs2"]
 
 [ext_resource type="PackedScene" uid="uid://b60un4x6w0jyi" path="res://scene/sound/SoundManager.tscn" id="1_c3qa1"]
 [ext_resource type="Script" path="res://scene/game/title.gd" id="1_t2nht"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://j2vw8wqgjbsq" path="res://resources/textures/play_3.tres" id="5_i2upl"]
 [ext_resource type="Texture2D" uid="uid://cre4121bjpw0p" path="res://resources/textures/play_2.tres" id="6_fqfmp"]
 [ext_resource type="SpriteFrames" uid="uid://btx2t126btr48" path="res://resources/frames/intro_anim.tres" id="7_g3kf0"]
+[ext_resource type="Texture2D" uid="uid://cgyfxusfeatlp" path="res://resources/textures/editor_1.tres" id="9_cilej"]
+[ext_resource type="Texture2D" uid="uid://i1id33oe18vb" path="res://resources/textures/editor_2.tres" id="10_65j8c"]
+[ext_resource type="Texture2D" uid="uid://blou1p5wy2gna" path="res://resources/textures/editor_3.tres" id="11_cbmul"]
+[ext_resource type="Texture2D" uid="uid://bk7ncd10bqlhh" path="res://resources/textures/custom_1.tres" id="12_k1rgl"]
+[ext_resource type="Texture2D" uid="uid://dbm4tx1o3h8vw" path="res://resources/textures/custom_3.tres" id="13_8u68l"]
+[ext_resource type="Texture2D" uid="uid://d2yg3iwso6ihj" path="res://resources/textures/custom_2.tres" id="14_fcacy"]
 
 [sub_resource type="Animation" id="Animation_6gx4r"]
 resource_name = "fade"
@@ -72,12 +78,41 @@ tracks/0/keys = {
 "values": [Vector2(250, 100), Vector2(150, 100)]
 }
 
+[sub_resource type="Animation" id="Animation_7tnxw"]
+resource_name = "truck_move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.287175),
+"update": 0,
+"values": [Vector2(250, 100), Vector2(150, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3eylh"]
 _data = {
 "fade": SubResource("Animation_6gx4r"),
 "title": SubResource("Animation_jsoyv"),
 "truck_move": SubResource("Animation_un8tm"),
-"truck_move_2": SubResource("Animation_vejhl")
+"truck_move_2": SubResource("Animation_vejhl"),
+"truck_move_title": SubResource("Animation_7tnxw")
 }
 
 [node name="title" type="Control"]
@@ -160,9 +195,9 @@ offset_right = 41.0
 offset_bottom = -142.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("4_sogup")
-texture_pressed = ExtResource("5_i2upl")
-texture_hover = ExtResource("6_fqfmp")
+texture_normal = ExtResource("9_cilej")
+texture_pressed = ExtResource("11_cbmul")
+texture_hover = ExtResource("10_65j8c")
 stretch_mode = 5
 
 [node name="Custom" type="TextureButton" parent="."]
@@ -181,9 +216,9 @@ offset_right = 42.0
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("4_sogup")
-texture_pressed = ExtResource("5_i2upl")
-texture_hover = ExtResource("6_fqfmp")
+texture_normal = ExtResource("12_k1rgl")
+texture_pressed = ExtResource("13_8u68l")
+texture_hover = ExtResource("14_fcacy")
 stretch_mode = 5
 
 [node name="Timer_fade" type="Timer" parent="."]

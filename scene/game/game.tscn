@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://6y83klolk51x"]
+[gd_scene load_steps=16 format=3 uid="uid://6y83klolk51x"]
 
 [ext_resource type="Script" path="res://scene/game/game.gd" id="1_gkser"]
 [ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="2_qen05"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://ciub4q58t70ve" path="res://resources/textures/restart_1.tres" id="8_4ytve"]
 [ext_resource type="Texture2D" uid="uid://behtkmbxqpjhv" path="res://resources/textures/restart_3.tres" id="9_by31a"]
 [ext_resource type="Texture2D" uid="uid://vsiq44k72cms" path="res://resources/textures/restart_2.tres" id="10_p43om"]
+[ext_resource type="Texture2D" uid="uid://753w4vp6sjaw" path="res://resources/textures/menu_1.tres" id="11_ntpwa"]
+[ext_resource type="Texture2D" uid="uid://cd4eblpobm1xa" path="res://resources/textures/menu_3.tres" id="12_52omf"]
+[ext_resource type="Texture2D" uid="uid://3j8dogi7jale" path="res://resources/textures/menu_2.tres" id="13_ipy37"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_gkser")
@@ -103,6 +106,15 @@ layout_mode = 2
 texture_normal = ExtResource("8_4ytve")
 texture_pressed = ExtResource("9_by31a")
 texture_hover = ExtResource("10_p43om")
+stretch_mode = 5
+
+[node name="Menu" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+texture_normal = ExtResource("11_ntpwa")
+texture_pressed = ExtResource("12_52omf")
+texture_hover = ExtResource("13_ipy37")
 stretch_mode = 5
 
 [node name="mute" type="TextureButton" parent="."]
