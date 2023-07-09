@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6y83klolk51x"]
+[gd_scene load_steps=24 format=3 uid="uid://6y83klolk51x"]
 
 [ext_resource type="Script" path="res://scene/game/game.gd" id="1_gkser"]
 [ext_resource type="PackedScene" uid="uid://lau331aol4pc" path="res://scene/grid/Grid.tscn" id="2_qen05"]
@@ -10,11 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://blou1p5wy2gna" path="res://resources/textures/editor_3.tres" id="6_vxprs"]
 [ext_resource type="Texture2D" uid="uid://i1id33oe18vb" path="res://resources/textures/editor_2.tres" id="7_fhn37"]
 [ext_resource type="Texture2D" uid="uid://ciub4q58t70ve" path="res://resources/textures/restart_1.tres" id="8_4ytve"]
+[ext_resource type="Texture2D" uid="uid://d3afux0rq3xdc" path="res://resources/textures/prev_1.tres" id="8_ypycu"]
+[ext_resource type="Texture2D" uid="uid://5crwunveh6tk" path="res://resources/textures/prev_2.tres" id="9_3pglm"]
 [ext_resource type="Texture2D" uid="uid://behtkmbxqpjhv" path="res://resources/textures/restart_3.tres" id="9_by31a"]
 [ext_resource type="Texture2D" uid="uid://vsiq44k72cms" path="res://resources/textures/restart_2.tres" id="10_p43om"]
+[ext_resource type="Texture2D" uid="uid://bs5teu3osmh30" path="res://resources/textures/prev_3.tres" id="10_r8wc2"]
 [ext_resource type="Texture2D" uid="uid://753w4vp6sjaw" path="res://resources/textures/menu_1.tres" id="11_ntpwa"]
+[ext_resource type="Texture2D" uid="uid://xkmd2c5ag0bt" path="res://resources/textures/next_1.tres" id="11_uhbo4"]
 [ext_resource type="Texture2D" uid="uid://cd4eblpobm1xa" path="res://resources/textures/menu_3.tres" id="12_52omf"]
+[ext_resource type="Texture2D" uid="uid://dxx8hb88fqaba" path="res://resources/textures/next_2.tres" id="12_w0x4v"]
+[ext_resource type="Texture2D" uid="uid://bm4g0lwk65m4h" path="res://resources/textures/next_3.tres" id="13_dtx1q"]
 [ext_resource type="Texture2D" uid="uid://3j8dogi7jale" path="res://resources/textures/menu_2.tres" id="13_ipy37"]
+[ext_resource type="FontFile" uid="uid://cm6obuloir356" path="res://resources/font/m3x6.ttf" id="22_hnqhc"]
+[ext_resource type="PackedScene" uid="uid://dvw5eg55wpiwp" path="res://scene/test/dialog.tscn" id="22_msary"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_gkser")
@@ -99,6 +107,24 @@ texture_pressed = ExtResource("6_vxprs")
 texture_hover = ExtResource("7_fhn37")
 stretch_mode = 6
 
+[node name="Prev" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+texture_normal = ExtResource("8_ypycu")
+texture_pressed = ExtResource("9_3pglm")
+texture_hover = ExtResource("10_r8wc2")
+stretch_mode = 6
+
+[node name="Next" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+texture_normal = ExtResource("11_uhbo4")
+texture_pressed = ExtResource("12_w0x4v")
+texture_hover = ExtResource("13_dtx1q")
+stretch_mode = 6
+
 [node name="Restart" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(120, 40)
@@ -127,3 +153,26 @@ texture_normal = ExtResource("4_fky37")
 texture_pressed = ExtResource("5_7spfk")
 
 [node name="win_timer" type="Timer" parent="."]
+
+[node name="dialog" parent="." instance=ExtResource("22_msary")]
+position = Vector2(632, 532)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = 919.0
+offset_top = 70.0
+offset_right = 959.0
+offset_bottom = 110.0
+
+[node name="Lvl" type="Label" parent="VBoxContainer2"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_hnqhc")
+theme_override_font_sizes/font_size = 36
+text = "Lvl : 5/10"
+
+[node name="Flames" type="Label" parent="VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_hnqhc")
+theme_override_font_sizes/font_size = 36
+text = "Burning : 1/5"

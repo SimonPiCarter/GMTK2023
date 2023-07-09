@@ -87,7 +87,17 @@ func set_up_title():
 
 func startPlay():
 	var game = load("res://scene/game/game.tscn").instantiate()
-	game.level.unserialize_level(Level.uncompress_string("01z2z24e204r1z3e1111"))
+	# game.set_levels(["01z2z24e204r1z3e1111"])
+	game.set_levels([ \
+		"ir1iz1u", \
+		"ir101iz1t", \
+		"u1r301z1t4u", \
+		"u1r3141e1t3e1r10", \
+		"1421241441213323214114212989555550", \
+		"142r42404301324344414120934022030", \
+		"r21012032014031410142024984234440", \
+		"4140210134010240420210404944333251 ", \
+	])
 
 	Level.switch_level(self, game)
 

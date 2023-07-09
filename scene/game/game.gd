@@ -1,11 +1,18 @@
 extends Node2D
 
+@onready var box = $VBoxContainer/ScrollContainer/box
+
+@onready var win_timer = $win_timer
+
 @onready var menu = $VBoxContainer/HBoxContainer/Menu
 @onready var restart = $VBoxContainer/HBoxContainer/Restart
 @onready var editor = $VBoxContainer/HBoxContainer/Editor
-@onready var box = $VBoxContainer/ScrollContainer/box
 @onready var mute = $mute
-@onready var win_timer = $win_timer
+@onready var prev = $VBoxContainer/HBoxContainer/Prev
+@onready var next = $VBoxContainer/HBoxContainer/Next
+
+@onready var lvl_label = $VBoxContainer2/Lvl
+@onready var burning_label = $VBoxContainer2/Flames
 
 var items : Array[Item] = []
 
@@ -21,6 +28,11 @@ var sound : SoundManager = null
 
 var over : bool = false
 var all_on_fire : bool = false
+var started : bool = false
+
+var current_level : int = 0
+var levels : Array[String] = []
+var scripts : Array[dialog_script] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,6 +42,8 @@ func _ready():
 	restart.pressed.connect(reload)
 	editor.pressed.connect(editor_load)
 	mute.pressed.connect(mute_sound)
+	prev.pressed.connect(prev_level)
+	next.pressed.connect(next_level)
 
 	$Grid.case_clicked.connect(clicked)
 	$Grid.case_entered.connect(entered)
@@ -37,7 +51,24 @@ func _ready():
 
 	win_timer.timeout.connect(win)
 
-	reload()
+	load_level(0)
+
+func set_levels(lvls : Array):
+	levels.clear()
+	levels.append_array(lvls)
+
+func next_level():
+	load_level(current_level+1)
+
+func prev_level():
+	load_level(current_level-1)
+
+func load_level(lvl : int):
+	if lvl < levels.size() and lvl >= 0:
+		current_level = lvl
+		level.unserialize_level(Level.uncompress_string(levels[lvl]))
+		lvl_label.text = "lvl : "+String.num_int64(lvl+1)+"/"+String.num_int64(levels.size())
+		reload()
 
 func win():
 	$win_screen.show()
@@ -56,6 +87,7 @@ func back_to_menu():
 func reload():
 	over = false
 	all_on_fire = false
+	started = true
 	if sound:
 		sound.play_fire(0)
 	# clear
@@ -80,7 +112,7 @@ func reload():
 	for x in range(0, $Grid.size_x):
 		for y in range(0, $Grid.size_y):
 			var prefab = level.getCase(x,y)
-			if prefab > 0:
+			if prefab > 0 and prefab-1 < loader.prefabs_case_loaded.size():
 				$Grid.get_elt(x, y).set_from_prefab(loader.prefabs_case_loaded[prefab-1])
 
 	# loading items
