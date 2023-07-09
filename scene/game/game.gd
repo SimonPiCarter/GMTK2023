@@ -150,6 +150,8 @@ func reload():
 				child.disable()
 		prefab += 1
 
+	burning_label.text = "burning : "+String.num_int64($Grid.get_nb_case_on_fire())+"/"+String.num_int64($Grid.get_nb_case_to_set_on_fire())
+
 func editor_load():
 	var scene = load("res://scene/editor/editor_main.tscn").instantiate()
 
@@ -213,6 +215,8 @@ func clicked(x, y):
 				if item.object.is_cat():
 					item.enable()
 			all_on_fire = true
+
+		burning_label.text = "burning : "+String.num_int64($Grid.get_nb_case_on_fire())+"/"+String.num_int64($Grid.get_nb_case_to_set_on_fire())
 
 		if $Grid.check_all_case_on_fire() and $Grid.check_cats_on_tree():
 			win()

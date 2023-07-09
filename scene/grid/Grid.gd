@@ -55,6 +55,13 @@ func check_all_case_on_fire() -> bool:
 			return false
 	return true
 
+func get_nb_case_to_set_on_fire() -> int:
+	var nb_case_to_set_on_fire = 0
+	for elt in data:
+		if not elt.empty and not elt.is_tree:
+			nb_case_to_set_on_fire += 1
+	return nb_case_to_set_on_fire
+
 func get_nb_case_on_fire() -> int:
 	var nb : int = 0
 	for elt in data:
