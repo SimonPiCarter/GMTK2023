@@ -70,7 +70,7 @@ func load_level(lvl : int):
 	if lvl < levels.size() and lvl >= 0:
 		current_level = lvl
 		level.unserialize_level(Level.uncompress_string(levels[lvl]))
-		lvl_label.text = "lvl : "+String.num_int64(lvl+1)+"/"+String.num_int64(levels.size())
+		lvl_label.text = "Level : "+String.num_int64(lvl+1)+"/"+String.num_int64(levels.size())
 		reload()
 
 func win():
@@ -154,7 +154,7 @@ func reload():
 				child.disable()
 		prefab += 1
 
-	burning_label.text = "burning : "+String.num_int64($Grid.get_nb_case_on_fire())+"/"+String.num_int64($Grid.get_nb_case_to_set_on_fire())
+	burning_label.text = "Burning : "+String.num_int64($Grid.get_nb_case_on_fire())+"/"+String.num_int64($Grid.get_nb_case_to_set_on_fire())
 
 func editor_load():
 	var scene = load("res://scene/editor/editor_main.tscn").instantiate()
