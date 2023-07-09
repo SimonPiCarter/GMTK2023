@@ -106,7 +106,7 @@ func startPlay():
 	game.scripts.push_back(script_tuto_3)
 
 	var script_tuto_4 = dialog_script.new()
-	script_tuto_4.texts.push_back("See this tree hover there? We need to be careful to net set it up on fire. How the hell are we going to put back the cats on it otherwise?")
+	script_tuto_4.texts.push_back("See this tree hover there? We need to be careful to not set it up on fire. How the hell are we going to put back the cats on it otherwise?")
 	script_tuto_4.types.push_back(dialog_script.Type.Firefighter)
 	script_tuto_4.texts.push_back("Please! my poor cat fell of the tree, help him climb back on it!")
 	script_tuto_4.types.push_back(dialog_script.Type.Grandma)
