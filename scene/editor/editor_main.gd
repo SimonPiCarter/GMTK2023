@@ -144,7 +144,7 @@ func select_case(item : ItemCase):
 	if current_item == item and current_item:
 		current_item.lowlight()
 		current_item = null
-	elif not current_item and item:
+	elif item:
 		item.highlight()
 		current_item = item
 		eraser_toogle.button_pressed = false
