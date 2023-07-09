@@ -21,7 +21,7 @@ bus = &"Music"
 
 [node name="intro_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4g8a6")
-volume_db = -6.0
+volume_db = -12.0
 bus = &"Music"
 
 [node name="clic_player" type="AudioStreamPlayer" parent="."]
@@ -35,15 +35,15 @@ volume_db = -6.0
 
 [node name="fire_player_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ong8y")
-volume_db = -6.0
+volume_db = -18.0
 
 [node name="fire_player_2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_wpgug")
-volume_db = -6.0
+volume_db = -18.0
 
 [node name="fire_player_3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_2rddo")
-volume_db = -6.0
+volume_db = -18.0
 
 [node name="lose_player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_lgn13")
