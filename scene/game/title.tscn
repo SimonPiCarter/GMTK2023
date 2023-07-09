@@ -213,7 +213,7 @@ tracks/10/path = NodePath("../../../Credits:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(2.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]

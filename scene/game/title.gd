@@ -3,19 +3,23 @@ extends Control
 @onready var play = $Play
 @onready var editor = $Editor
 @onready var custom = $Custom
+@onready var credits = $Credits
 @onready var sprite_bg = $SubViewportContainer/SubViewport/AnimatedSprite2D
 @onready var sprite_truck = $SubViewportContainer/SubViewport/truck
+@onready var black = $black
 @onready var timer = $Timer
 @onready var timer_fade = $Timer_fade
 @onready var diag_r = $diag_r
 @onready var diag_l = $diag_l
 @onready var player = $player
+@onready var credit_box = $credit_box
 
 # sound can be overrided before insertion into tree
 # to avoid sound breaking
 var sound : SoundManager = null
 
 var state : int = 0
+var credits_on : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,6 +38,7 @@ func _ready():
 	play.pressed.connect(startPlay)
 	editor.pressed.connect(startEditor)
 	custom.pressed.connect(startCustom)
+	credits.pressed.connect(startCredits)
 	sprite_bg.play("default")
 	timer_fade.timeout.connect(switch_scene)
 
@@ -162,6 +167,21 @@ func startCustom():
 	var scene = preload("res://scene/game/custom.tscn").instantiate()
 
 	Level.switch_level(self, scene)
+
+func startCredits():
+	if credits_on:
+		black.color = Color(0,0,0,0)
+		play.disabled = false
+		editor.disabled = false
+		custom.disabled = false
+		credit_box.hide()
+	else:
+		black.color = Color(0,0,0,0.75)
+		play.disabled = true
+		editor.disabled = true
+		custom.disabled = true
+		credit_box.show()
+	credits_on = not credits_on
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_SPACE and state < 4:
