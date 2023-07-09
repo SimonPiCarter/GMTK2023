@@ -220,6 +220,8 @@ func clicked(x, y):
 			for item in items:
 				if item.object.is_cat():
 					item.enable()
+				else:
+					item.hide()
 			all_on_fire = true
 
 		burning_label.text = "burning : "+String.num_int64($Grid.get_nb_case_on_fire())+"/"+String.num_int64($Grid.get_nb_case_to_set_on_fire())
