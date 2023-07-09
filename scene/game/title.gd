@@ -68,6 +68,7 @@ func transition():
 		player.play("fade")
 	if state == 4:
 		set_up_title()
+		sound.play_music(true)
 
 	state += 1
 
@@ -144,4 +145,5 @@ func startCustom():
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_SPACE and state < 4:
+		sound.play_music(true)
 		set_up_title()
