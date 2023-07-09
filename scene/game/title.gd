@@ -87,7 +87,7 @@ func set_up_title():
 	$skip.hide()
 
 func startPlay():
-	var game = load("res://scene/game/game.tscn").instantiate()
+	var game = preload("res://scene/game/game.tscn").instantiate()
 
 	var script_tuto_1 = dialog_script.new()
 	script_tuto_1.texts.push_back("See this house? How it is not burning ? We need to act fast and burn it before anyone gets hurt!")
@@ -123,6 +123,8 @@ func startPlay():
 		"y1e111r414043034z22010", \
 		"0413402414412323442010341545055040", \
 		"30101243e114e3214r21434203540", \
+		"2420101320141404022312401632212130", \
+		"02e431102243e2y1e21010", \
 		"31414r120201031403432012934433351", \
 		"1421241441213323214114212989555550", \
 		"142r42404301324344414120934022030", \
@@ -136,7 +138,7 @@ func startPlay():
 	sound.play_music(true)
 
 func startEditor():
-	var scene = load("res://scene/editor/editor_main.tscn").instantiate()
+	var scene = preload("res://scene/editor/editor_main.tscn").instantiate()
 
 	Level.switch_level(self, scene)
 
@@ -144,7 +146,7 @@ func startEditor():
 	sound.play_music(true)
 
 func startCustom():
-	var scene = load("res://scene/game/custom.tscn").instantiate()
+	var scene = preload("res://scene/game/custom.tscn").instantiate()
 
 	Level.switch_level(self, scene)
 

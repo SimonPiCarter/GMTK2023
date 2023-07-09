@@ -163,17 +163,17 @@ visible = false
 position = Vector2(632, 532)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
-offset_left = 919.0
+offset_left = 935.0
 offset_top = 70.0
-offset_right = 959.0
-offset_bottom = 110.0
+offset_right = 1135.0
+offset_bottom = 182.0
 
 [node name="Lvl" type="Label" parent="VBoxContainer2"]
 texture_filter = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("22_hnqhc")
 theme_override_font_sizes/font_size = 64
-text = "Lvl : 5/10"
+text = "Level : 5/10"
 
 [node name="Flames" type="Label" parent="VBoxContainer2"]
 texture_filter = 1
