@@ -129,7 +129,9 @@ func loadSeed():
 
 func play():
 	var game = load("res://scene/game/game.tscn").instantiate()
-	game.level.unserialize_level(Level.uncompress_string(serialize_label.text))
+
+	game.set_levels([serialize_label.text])
+	game.scripts.clear()
 
 	game.get_node("mute").button_pressed = mute.button_pressed
 	Level.switch_level(self, game)

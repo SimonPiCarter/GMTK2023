@@ -17,7 +17,8 @@ func start_play():
 	var game = load("res://scene/game/game.tscn").instantiate()
 
 	if textEdit.text != "":
-		game.level.unserialize_level(Level.uncompress_string(textEdit.text))
+		game.set_levels([textEdit.text])
+		game.scripts.clear()
 
 	Level.switch_level(self, game)
 
