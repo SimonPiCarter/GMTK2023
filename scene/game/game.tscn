@@ -98,6 +98,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_w5myt")
 texture_pressed = ExtResource("6_vxprs")
 texture_hover = ExtResource("7_fhn37")
+texture_disabled = ExtResource("5_w5myt")
 stretch_mode = 6
 
 [node name="Prev" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
@@ -107,6 +108,7 @@ layout_mode = 2
 texture_normal = ExtResource("8_ypycu")
 texture_pressed = ExtResource("9_3pglm")
 texture_hover = ExtResource("10_r8wc2")
+texture_disabled = ExtResource("8_ypycu")
 stretch_mode = 6
 
 [node name="Next" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
@@ -116,6 +118,7 @@ layout_mode = 2
 texture_normal = ExtResource("11_uhbo4")
 texture_pressed = ExtResource("12_w0x4v")
 texture_hover = ExtResource("13_dtx1q")
+texture_disabled = ExtResource("11_uhbo4")
 stretch_mode = 6
 
 [node name="Restart" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
@@ -125,6 +128,7 @@ layout_mode = 2
 texture_normal = ExtResource("8_4ytve")
 texture_pressed = ExtResource("9_by31a")
 texture_hover = ExtResource("10_p43om")
+texture_disabled = ExtResource("8_4ytve")
 stretch_mode = 6
 
 [node name="Menu" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
@@ -134,6 +138,7 @@ layout_mode = 2
 texture_normal = ExtResource("11_ntpwa")
 texture_pressed = ExtResource("12_52omf")
 texture_hover = ExtResource("13_ipy37")
+texture_disabled = ExtResource("11_ntpwa")
 stretch_mode = 6
 
 [node name="win_timer" type="Timer" parent="."]
@@ -165,7 +170,6 @@ text = "Burning : 1/5"
 visible = false
 offset_right = 1200.0
 offset_bottom = 900.0
-mouse_filter = 2
 color = Color(0, 0, 0, 0.870588)
 
 [node name="volume" type="Control" parent="."]

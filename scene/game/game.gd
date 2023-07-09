@@ -92,6 +92,11 @@ func win():
 	$win_screen.show()
 	$next_win.show()
 	$background.show()
+	menu.disabled = false
+	restart.disabled = false
+	editor.disabled = false
+	prev.disabled = false
+	next.disabled = false
 	over = true
 	if sound:
 		sound.play_win()
@@ -213,6 +218,11 @@ func select(item : Item):
 		sound.play_cat()
 		$Grid.place_cats()
 		win_timer.start(1)
+		menu.disabled = true
+		restart.disabled = true
+		editor.disabled = true
+		prev.disabled = true
+		next.disabled = true
 
 	if sound:
 		sound.play_clic()
