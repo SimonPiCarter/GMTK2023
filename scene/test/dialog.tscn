@@ -28,3 +28,6 @@ autowrap_mode = 3
 stream = ExtResource("4_woxkx")
 volume_db = -18.0
 bus = &"FX"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

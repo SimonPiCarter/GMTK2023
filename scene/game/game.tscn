@@ -97,7 +97,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_w5myt")
 texture_pressed = ExtResource("6_vxprs")
 texture_hover = ExtResource("7_fhn37")
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="Restart" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 texture_filter = 1
@@ -106,7 +106,7 @@ layout_mode = 2
 texture_normal = ExtResource("8_4ytve")
 texture_pressed = ExtResource("9_by31a")
 texture_hover = ExtResource("10_p43om")
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="Menu" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 texture_filter = 1
@@ -115,7 +115,7 @@ layout_mode = 2
 texture_normal = ExtResource("11_ntpwa")
 texture_pressed = ExtResource("12_52omf")
 texture_hover = ExtResource("13_ipy37")
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="mute" type="TextureButton" parent="."]
 offset_left = 1134.0

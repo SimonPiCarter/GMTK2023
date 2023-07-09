@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b6uxr8kib0gs2"]
+[gd_scene load_steps=23 format=3 uid="uid://b6uxr8kib0gs2"]
 
 [ext_resource type="PackedScene" uid="uid://b60un4x6w0jyi" path="res://scene/sound/SoundManager.tscn" id="1_c3qa1"]
 [ext_resource type="Script" path="res://scene/game/title.gd" id="1_t2nht"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dvw5eg55wpiwp" path="res://scene/test/dialog.tscn" id="12_vd6ty"]
 [ext_resource type="Texture2D" uid="uid://dbm4tx1o3h8vw" path="res://resources/textures/custom_3.tres" id="13_8u68l"]
 [ext_resource type="Texture2D" uid="uid://d2yg3iwso6ihj" path="res://resources/textures/custom_2.tres" id="14_fcacy"]
+[ext_resource type="FontFile" uid="uid://cm6obuloir356" path="res://resources/font/m3x6.ttf" id="16_5ak4k"]
 
 [sub_resource type="Animation" id="Animation_6gx4r"]
 resource_name = "fade"
@@ -178,7 +179,7 @@ grow_vertical = 0
 texture_normal = ExtResource("4_sogup")
 texture_pressed = ExtResource("5_i2upl")
 texture_hover = ExtResource("6_fqfmp")
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="Editor" type="TextureButton" parent="."]
 visible = false
@@ -199,9 +200,7 @@ grow_vertical = 0
 texture_normal = ExtResource("9_cilej")
 texture_pressed = ExtResource("11_cbmul")
 texture_hover = ExtResource("10_65j8c")
-stretch_mode = 5
-
-[node name="dialog" parent="Editor" instance=ExtResource("12_vd6ty")]
+stretch_mode = 6
 
 [node name="Custom" type="TextureButton" parent="."]
 visible = false
@@ -213,16 +212,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -58.0
+offset_left = -67.0
 offset_top = -139.0
-offset_right = 42.0
+offset_right = 48.0
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("12_k1rgl")
 texture_pressed = ExtResource("13_8u68l")
 texture_hover = ExtResource("14_fcacy")
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="Timer_fade" type="Timer" parent="."]
 
@@ -243,3 +242,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="diag_r" parent="." instance=ExtResource("12_vd6ty")]
+position = Vector2(931, 228)
+
+[node name="diag_l" parent="." instance=ExtResource("12_vd6ty")]
+position = Vector2(261, 345)
+
+[node name="skip" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -29.0
+offset_right = 224.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("16_5ak4k")
+theme_override_font_sizes/font_size = 32
+text = "Press SPACE to skip"

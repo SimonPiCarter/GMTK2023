@@ -7,6 +7,8 @@ extends Control
 @onready var sprite_truck = $SubViewportContainer/SubViewport/truck
 @onready var timer = $Timer
 @onready var timer_fade = $Timer_fade
+@onready var diag_r = $diag_r
+@onready var diag_l = $diag_l
 @onready var player = $player
 
 # sound can be overrided before insertion into tree
@@ -25,13 +27,21 @@ func _ready():
 		# sound should already be added
 		#add_child(sound)
 
+	diag_r.set_text("911, what's your emergency?")
+	diag_r.read()
+
+	diag_r.auto_over = true
+	diag_r.is_over.connect(transition)
+	diag_r.show()
+	diag_l.auto_over = true
+	diag_l.is_over.connect(transition)
+	diag_l.hide()
+
 	sound.play_fire(1)
 	play.pressed.connect(startPlay)
 	editor.pressed.connect(startEditor)
 	custom.pressed.connect(startCustom)
 	sprite_bg.play("default")
-	timer.start(2)
-	timer.timeout.connect(transition)
 	timer_fade.timeout.connect(switch_scene)
 
 func switch_scene():
@@ -39,25 +49,32 @@ func switch_scene():
 
 func transition():
 	if state == 0:
-		player.play("truck_move")
+		diag_r.hide()
+		diag_l.show()
+		diag_l.set_text("Skrrrr... Please! Come fast! My... Skrrrr Skrrrr... Burning!")
+		diag_l.read()
 	if state == 1:
+		diag_l.hide()
+		diag_r.show()
+		diag_r.set_text("Oh no! quick! That's a mission for us! Let's help this poor soul!")
+		diag_r.read()
+	if state == 2:
+		diag_r.hide()
+		timer.start(2)
+		timer.timeout.connect(transition)
+		player.play("truck_move")
+	if state == 3:
 		timer_fade.start(0.75)
 		player.play("fade")
-	if state == 2:
-		sprite_truck.position.x = 250
-		player.play("truck_move_2")
-	if state == 3:
-		sound.play_intro(true)
-		player.play("title")
-		play.show()
-		editor.show()
-		custom.show()
-		timer.stop()
+	if state == 4:
+		set_up_title()
 
 	state += 1
 
 # directly set to title screen (skip intro)
 func set_up_title():
+	diag_r.stop()
+	diag_l.stop()
 	sprite_truck.position.x = 250
 	player.play("truck_move_title")
 	switch_scene()
@@ -66,6 +83,7 @@ func set_up_title():
 	custom.show()
 	timer.stop()
 	state = 4
+	$skip.hide()
 
 func startPlay():
 	var game = load("res://scene/game/game.tscn").instantiate()
@@ -88,3 +106,7 @@ func startCustom():
 	var scene = load("res://scene/game/custom.tscn").instantiate()
 
 	Level.switch_level(self, scene)
+
+func _input(event):
+	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_SPACE and state < 4:
+		set_up_title()
