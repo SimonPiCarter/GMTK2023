@@ -7,7 +7,8 @@ extends Node2D
 @onready var menu = $VBoxContainer/HBoxContainer/Menu
 @onready var restart = $VBoxContainer/HBoxContainer/Restart
 @onready var editor = $VBoxContainer/HBoxContainer/Editor
-@onready var mute = $mute
+@onready var mute = $volume/mute
+@onready var sound_level = $volume/level
 @onready var prev = $VBoxContainer/HBoxContainer/Prev
 @onready var next = $VBoxContainer/HBoxContainer/Next
 
@@ -42,10 +43,12 @@ func _ready():
 	$Step.pressed.connect($Grid.decrease_timer)
 	menu.pressed.connect(back_to_menu)
 	restart.pressed.connect(reload)
+	$restart_lose.pressed.connect(reload)
 	editor.pressed.connect(editor_load)
 	mute.pressed.connect(mute_sound)
 	prev.pressed.connect(prev_level)
 	next.pressed.connect(next_level)
+	$next_win.pressed.connect(next_level)
 	dialog.is_over.connect(start)
 
 	$Grid.case_clicked.connect(clicked)
@@ -54,7 +57,19 @@ func _ready():
 
 	win_timer.timeout.connect(win)
 
+	sound_level.value_changed.connect(change_sound_level)
+
 	load_level(0)
+
+func change_sound_level(lvl : float):
+	var volume_db = -6. + (1. - lvl/100.)*(-12)
+	AudioServer.set_bus_volume_db(0, volume_db)
+	if lvl < 1:
+		mute.button_pressed = true
+		mute_sound()
+	elif mute.button_pressed:
+		mute.button_pressed = false
+		mute_sound()
 
 func set_levels(lvls : Array):
 	levels.clear()
@@ -75,6 +90,8 @@ func load_level(lvl : int):
 
 func win():
 	$win_screen.show()
+	$next_win.show()
+	$background.show()
 	over = true
 	if sound:
 		sound.play_win()
@@ -111,16 +128,19 @@ func reload():
 	# clear
 	items.clear()
 	$win_screen.hide()
+	$next_win.hide()
 	$lose_screen.hide()
+	$restart_lose.hide()
+	$background.hide()
 	current_item = null
 
 	# loading level
 	$Grid.resize(5,5)
 	$Grid.position = Vector2(600-5*$Grid.SIZE/2+$Grid.SIZE/2,$Grid.SIZE/2 + grid_margin)
 
-	$ColorRect.position.x = 600-5*$Grid.SIZE/2
-	$ColorRect.size.x = 5*$Grid.SIZE
-	$ColorRect.size.y = 5*$Grid.SIZE
+	$TextureRect.position.x = 600-5*$Grid.SIZE/2
+	$TextureRect.size.x = 5*$Grid.SIZE
+	$TextureRect.size.y = 5*$Grid.SIZE
 
 	# meta data
 	var loader = JsonLoader.new()
@@ -175,9 +195,11 @@ func mute_sound():
 	if mute.button_pressed:
 		sound.mute()
 		dialog.mute()
+		sound_level.value = 0
 	else:
 		sound.unmute()
 		dialog.unmute()
+		sound_level.value = 100
 
 func select(item : Item):
 	if over or not started:
@@ -231,6 +253,8 @@ func clicked(x, y):
 		elif (no_more_items() and not $Grid.check_all_case_on_fire()) or $Grid.tree_on_fire():
 			over = true
 			$lose_screen.show()
+			$restart_lose.show()
+			$background.show()
 			if sound:
 				sound.play_lose()
 		elif not all_on_fire:
