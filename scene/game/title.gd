@@ -27,15 +27,8 @@ func _ready():
 		# sound should already be added
 		#add_child(sound)
 
-	diag_r.set_text("911, what's your emergency?")
-	diag_r.read()
-
-	diag_r.auto_over = true
-	diag_r.is_over.connect(transition)
-	diag_r.show()
-	diag_l.auto_over = true
-	diag_l.is_over.connect(transition)
-	diag_l.hide()
+	player.play("fade_out")
+	player.animation_finished.connect(cond_start)
 
 	sound.play_fire(1)
 	play.pressed.connect(startPlay)
@@ -46,6 +39,21 @@ func _ready():
 
 func switch_scene():
 	sprite_bg.play("screen2")
+
+func cond_start(anim):
+	if anim == "fade_out":
+		start_dialog()
+
+func start_dialog():
+	diag_r.set_text("911, what's your emergency?")
+	diag_r.read()
+
+	diag_r.auto_over = true
+	diag_r.is_over.connect(transition)
+	diag_r.show()
+	diag_l.auto_over = true
+	diag_l.is_over.connect(transition)
+	diag_l.hide()
 
 func transition():
 	if state == 0:

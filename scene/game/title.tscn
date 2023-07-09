@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6uxr8kib0gs2"]
+[gd_scene load_steps=24 format=3 uid="uid://b6uxr8kib0gs2"]
 
 [ext_resource type="PackedScene" uid="uid://b60un4x6w0jyi" path="res://scene/sound/SoundManager.tscn" id="1_c3qa1"]
 [ext_resource type="Script" path="res://scene/game/title.gd" id="1_t2nht"]
@@ -74,15 +74,15 @@ tracks/0/path = NodePath("../truck:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.287175),
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(0.307787, 1),
 "update": 0,
 "values": [Vector2(250, 100), Vector2(150, 100)]
 }
 
 [sub_resource type="Animation" id="Animation_7tnxw"]
 resource_name = "truck_move"
-length = 2.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -102,15 +102,116 @@ tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Play:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../Editor:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../Custom:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../Play:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../Editor:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../Custom:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../../black:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_as5wm"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3eylh"]
 _data = {
 "fade": SubResource("Animation_6gx4r"),
+"fade_out": SubResource("Animation_as5wm"),
 "title": SubResource("Animation_jsoyv"),
 "truck_move": SubResource("Animation_un8tm"),
 "truck_move_2": SubResource("Animation_vejhl"),
@@ -161,7 +262,7 @@ texture = ExtResource("2_2sua1")
 [node name="sound" parent="." instance=ExtResource("1_c3qa1")]
 
 [node name="Play" type="TextureButton" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 1
@@ -171,18 +272,20 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -60.0
-offset_top = -223.0
+offset_top = -212.0
 offset_right = 40.0
-offset_bottom = -183.0
+offset_bottom = -172.0
 grow_horizontal = 2
 grow_vertical = 0
+disabled = true
 texture_normal = ExtResource("4_sogup")
 texture_pressed = ExtResource("5_i2upl")
 texture_hover = ExtResource("6_fqfmp")
+texture_disabled = ExtResource("4_sogup")
 stretch_mode = 6
 
 [node name="Editor" type="TextureButton" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 1
@@ -192,18 +295,20 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -59.0
-offset_top = -182.0
+offset_top = -171.0
 offset_right = 41.0
-offset_bottom = -142.0
+offset_bottom = -131.0
 grow_horizontal = 2
 grow_vertical = 0
+disabled = true
 texture_normal = ExtResource("9_cilej")
 texture_pressed = ExtResource("11_cbmul")
 texture_hover = ExtResource("10_65j8c")
+texture_disabled = ExtResource("9_cilej")
 stretch_mode = 6
 
 [node name="Custom" type="TextureButton" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 1
@@ -213,14 +318,16 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -67.0
-offset_top = -139.0
+offset_top = -128.0
 offset_right = 48.0
-offset_bottom = -99.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 0
+disabled = true
 texture_normal = ExtResource("12_k1rgl")
 texture_pressed = ExtResource("13_8u68l")
 texture_hover = ExtResource("14_fcacy")
+texture_disabled = ExtResource("12_k1rgl")
 stretch_mode = 6
 
 [node name="Timer_fade" type="Timer" parent="."]
