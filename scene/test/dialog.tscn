@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvw5eg55wpiwp"]
+[gd_scene load_steps=7 format=3 uid="uid://dvw5eg55wpiwp"]
 
 [ext_resource type="Script" path="res://scene/test/dialog.gd" id="1_bafys"]
 [ext_resource type="Texture2D" uid="uid://dwbxkjl0hkquo" path="res://resources/sprites/sprite_dia_01.png" id="2_cm850"]
 [ext_resource type="FontFile" uid="uid://cm6obuloir356" path="res://resources/font/m3x6.ttf" id="3_oivgn"]
 [ext_resource type="AudioStream" uid="uid://b3dyp31boku33" path="res://resources/sounds/Voix_parole_up-001.wav" id="4_woxkx"]
+[ext_resource type="SpriteFrames" uid="uid://cwa6ms2b7vmi8" path="res://resources/frames/firefighter.tres" id="5_bj6ln"]
+[ext_resource type="SpriteFrames" uid="uid://c8tency4gymfs" path="res://resources/frames/grandma.tres" id="6_6dlqb"]
 
 [node name="dialog" type="Node2D"]
 script = ExtResource("1_bafys")
@@ -28,6 +30,19 @@ autowrap_mode = 3
 stream = ExtResource("4_woxkx")
 volume_db = -18.0
 bus = &"FX"
+
+[node name="firefighter" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-341, 0)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("5_bj6ln")
+
+[node name="grandma" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-341, 0)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("6_6dlqb")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

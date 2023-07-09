@@ -3,6 +3,8 @@ extends Node2D
 @onready var dialog = $dialog
 @onready var voice = $voice
 @onready var text = $dialog/Label
+@onready var firefighter = $firefighter
+@onready var grandma = $grandma
 
 var reading : bool = false
 var muted : bool = false
@@ -22,6 +24,7 @@ signal is_over()
 
 func _ready():
 	$Timer.timeout.connect(send_over)
+	show_none()
 
 func send_over():
 	if not over_emitted:
@@ -30,6 +33,20 @@ func send_over():
 
 func set_text(inText : String):
 	text.text = inText
+
+func show_grandma():
+	grandma.show()
+	firefighter.hide()
+	grandma.play("default")
+
+func show_fiefighter():
+	grandma.hide()
+	firefighter.show()
+	firefighter.play("default")
+
+func show_none():
+	grandma.hide()
+	firefighter.hide()
 
 func read():
 	var rand = RandomNumberGenerator.new()

@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://cwa6ms2b7vmi8"]
+
+[ext_resource type="Texture2D" uid="uid://y22ajmhxnk63" path="res://resources/sprites/sprite_chara_01.png" id="1_ogyge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7syms"]
+atlas = ExtResource("1_ogyge")
+region = Rect2(0, 42, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0dij"]
+atlas = ExtResource("1_ogyge")
+region = Rect2(42, 42, 42, 42)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7syms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0dij")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
