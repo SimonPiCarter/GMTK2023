@@ -121,7 +121,7 @@
 			"is_protected" : false,
 			"is_forbidden" : false,
 			"is_tree" : false,
-			"fire_duration" : 0,
+			"fire_duration" : 5,
 			"frames" :
 			[
 				"res://resources/frames/house_2_1.tres",
@@ -133,7 +133,7 @@
 			"is_protected" : false,
 			"is_forbidden" : false,
 			"is_tree" : false,
-			"fire_duration" : 0,
+			"fire_duration" : 3,
 			"frames" :
 			[
 				"res://resources/frames/house_3_1.tres",
