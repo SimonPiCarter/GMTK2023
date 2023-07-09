@@ -11,6 +11,8 @@ extends Node2D
 @onready var prev = $VBoxContainer/HBoxContainer/Prev
 @onready var next = $VBoxContainer/HBoxContainer/Next
 
+@onready var dialog = $dialog
+
 @onready var lvl_label = $VBoxContainer2/Lvl
 @onready var burning_label = $VBoxContainer2/Flames
 
@@ -44,6 +46,7 @@ func _ready():
 	mute.pressed.connect(mute_sound)
 	prev.pressed.connect(prev_level)
 	next.pressed.connect(next_level)
+	dialog.is_over.connect(start)
 
 	$Grid.case_clicked.connect(clicked)
 	$Grid.case_entered.connect(entered)
@@ -84,10 +87,21 @@ func back_to_menu():
 	title.set_up_title()
 	sound.play_intro(true)
 
+func start():
+	started = true
+	dialog.hide()
+
 func reload():
+	dialog.hide()
+	if current_level < scripts.size() and scripts[current_level].texts.size() > 0:
+		started = false
+		dialog.show()
+		dialog.set_scripts(scripts[current_level])
+		dialog.read()
+	else:
+		started = true
 	over = false
 	all_on_fire = false
-	started = true
 	if sound:
 		sound.play_fire(0)
 	# clear
@@ -158,7 +172,7 @@ func mute_sound():
 		sound.unmute()
 
 func select(item : Item):
-	if over:
+	if over or not started:
 		return
 	reset_all_items()
 	if item.object.qty > 0 and not item.object.is_cat() and not all_on_fire:
@@ -174,7 +188,7 @@ func select(item : Item):
 		sound.play_clic()
 
 func clicked(x, y):
-	if over:
+	if over or not started:
 		return
 	if current_item:
 		var current_obj = current_item.object

@@ -155,6 +155,7 @@ texture_pressed = ExtResource("5_7spfk")
 [node name="win_timer" type="Timer" parent="."]
 
 [node name="dialog" parent="." instance=ExtResource("22_msary")]
+visible = false
 position = Vector2(632, 532)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]

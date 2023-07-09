@@ -88,11 +88,36 @@ func set_up_title():
 func startPlay():
 	var game = load("res://scene/game/game.tscn").instantiate()
 	# game.set_levels(["01z2z24e204r1z3e1111"])
+
+	var script_tuto_1 = dialog_script.new()
+	script_tuto_1.texts.push_back("See this house? How it is not burning ? We need to act fast and burn it before anyone gets hurt!")
+	script_tuto_1.types.push_back(dialog_script.Type.Firefighter)
+	game.scripts.push_back(script_tuto_1)
+
+	var script_tuto_2 = dialog_script.new()
+	script_tuto_2.texts.push_back("Thanks to our very well designed firefighter gears we can light multiple houses at a time. Check it out. Be wary supply may be limite.")
+	script_tuto_2.types.push_back(dialog_script.Type.Firefighter)
+	game.scripts.push_back(script_tuto_2)
+
+	var script_tuto_3 = dialog_script.new()
+	script_tuto_3.texts.push_back("Oh no! This house is particularly resistant to fire! It will burn less long, and that's a problem ! When you set a house on fire always check the conveniently placed timer to know when it will stop burning.")
+	script_tuto_3.types.push_back(dialog_script.Type.Firefighter)
+	game.scripts.push_back(script_tuto_3)
+
+	var script_tuto_4 = dialog_script.new()
+	script_tuto_4.texts.push_back("See this tree hover there? We need to be careful to net set it up on fire. How the hell are we going to put back the cats on it otherwise?")
+	script_tuto_4.types.push_back(dialog_script.Type.Firefighter)
+	script_tuto_4.texts.push_back("Please! my poor cat fell of the tree, help him climb back on it!")
+	script_tuto_4.types.push_back(dialog_script.Type.Grandma)
+	script_tuto_4.texts.push_back("Of course ! We just need to deal with all the fire before! Just to ensure your cat is safe")
+	script_tuto_4.types.push_back(dialog_script.Type.Firefighter)
+	game.scripts.push_back(script_tuto_4)
+
 	game.set_levels([ \
 		"ir1iz1u", \
 		"ir101iz1t", \
-		"u1r301z1t4u", \
-		"u1r3141e1t3e1r10", \
+		"y1r301z1y4u", \
+		"y1r3141e1y3e1r10", \
 		"1421241441213323214114212989555550", \
 		"142r42404301324344414120934022030", \
 		"r21012032014031410142024984234440", \

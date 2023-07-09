@@ -20,6 +20,9 @@ var auto_over = false
 # time after end when the signal is going to be emitted if auto_over is true
 var auto_over_timer = 0.5
 
+var text_script : dialog_script = dialog_script.new()
+var current_script = 0
+
 signal is_over()
 
 func _ready():
@@ -27,12 +30,38 @@ func _ready():
 	show_none()
 
 func send_over():
-	if not over_emitted:
+	current_script += 1
+	if current_script < text_script.texts.size() and current_script < text_script.types.size():
+		update(true)
+
+	elif not over_emitted :
 		is_over.emit()
 		over_emitted = true
 
+func update(to_read : bool = false):
+	text.text = text_script.texts[current_script]
+	match text_script.types[current_script]:
+		dialog_script.Type.Grandma:
+			show_grandma()
+		dialog_script.Type.Firefighter:
+			show_fiefighter()
+		dialog_script.Type.None:
+			show_none()
+	if to_read:
+		read()
+
 func set_text(inText : String):
-	text.text = inText
+	text_script.texts.clear()
+	text_script.types.clear()
+	text_script.texts.push_back(inText)
+	text_script.types.push_back(dialog_script.Type.None)
+	current_script = 0
+	update()
+
+func set_scripts(inScript : dialog_script):
+	text_script = inScript
+	current_script = 0
+	update()
 
 func show_grandma():
 	grandma.show()
@@ -87,6 +116,8 @@ func _process(delta):
 	if text.visible_characters >= text.text.length() and not over:
 		voice.stop()
 		over = true
+		firefighter.stop()
+		grandma.stop()
 		if auto_over:
 			$Timer.start(auto_over_timer)
 
