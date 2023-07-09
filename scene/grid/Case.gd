@@ -73,12 +73,11 @@ func start_fire():
 
 	in_flame = true
 
-	if not is_tree:
-		$Sprite.play("fire")
-		timer = fire_duration
-		if fire_duration > 0:
-			label.show()
-		label.text = String.num_int64(timer)
+	$Sprite.play("fire")
+	timer = fire_duration
+	if fire_duration > 0:
+		label.show()
+	label.text = String.num_int64(timer)
 
 
 func place_cat():

@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dq5ue82iiya4b"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://dq5ue82iiya4b"]
 
 [ext_resource type="Texture2D" uid="uid://40a3t6sagrxg" path="res://resources/sprites/sprite_house_01.png" id="1_2u5xb"]
+[ext_resource type="Texture2D" uid="uid://b1mr2fq8g8smo" path="res://resources/sprites/sprite_arbre_feu_01.png" id="2_56tu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmhcs"]
 atlas = ExtResource("1_2u5xb")
@@ -9,6 +10,18 @@ region = Rect2(126, 378, 42, 42)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnkb2"]
 atlas = ExtResource("1_2u5xb")
 region = Rect2(84, 378, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0et3m"]
+atlas = ExtResource("2_56tu5")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dehwd"]
+atlas = ExtResource("2_56tu5")
+region = Rect2(168, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyahf"]
+atlas = ExtResource("2_56tu5")
+region = Rect2(210, 0, 42, 42)
 
 [resource]
 animations = [{
@@ -26,5 +39,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0et3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dehwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyahf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dehwd")
+}],
+"loop": true,
+"name": &"fire",
 "speed": 5.0
 }]
