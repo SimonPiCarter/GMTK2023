@@ -37,6 +37,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c830h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg22u")
 }],
 "loop": true,
 "name": &"fire",
